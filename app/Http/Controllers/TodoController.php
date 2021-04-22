@@ -27,10 +27,12 @@ class TodoController extends Controller
      */
     public function showDetail($id) {
         $todo = Todo::find($id);
+        
         if (is_null($todo)) {
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todos'));
         }
+
         return view('todo.detail', ['todo' => $todo]);
     }
 
@@ -53,6 +55,7 @@ class TodoController extends Controller
     public function exeStore(TodoRequest $request) {
         //ToDoのデータを受け取る
         $inputs = $request->all();
+
         \DB::beginTransaction();
         try {
             Todo::create($inputs);
@@ -61,6 +64,7 @@ class TodoController extends Controller
             \DB::rollback();
             abort(500);
         }
+
         \Session::flash('err_msg', 'ToDoを登録しました。');
         return redirect(route('todos'));
     }
@@ -73,10 +77,12 @@ class TodoController extends Controller
      */
     public function showEdit($id) {
         $todo = Todo::find($id);
+        
         if (is_null($todo)) {
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todos'));
         }
+        
         return view('todo.edit', ['todo' => $todo]);
     }
 
@@ -89,6 +95,7 @@ class TodoController extends Controller
     public function exeUpdate(TodoRequest $request) {
         //ToDoのデータを受け取る
         $inputs = $request->all();
+        
         \DB::beginTransaction();
         try {
             $todo = Todo::find($inputs['id']);
@@ -102,6 +109,7 @@ class TodoController extends Controller
             \DB::rollback();
             abort(500);
         }
+        
         \Session::flash('err_msg', 'ToDoを更新しました。');
         return redirect(route('todos'));
     }
@@ -117,14 +125,14 @@ class TodoController extends Controller
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todos'));
         }
+        
         try {
             Todo::destroy($id);
         } catch(\Throwable $e) {
             abort(500);
         }
+        
         \Session::flash('err_msg', '削除しました。');
         return redirect(route('todos'));
     }
-
 }
-
