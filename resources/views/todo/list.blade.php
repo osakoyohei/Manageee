@@ -4,6 +4,9 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
         <h2>ToDoリスト</h2>
+        
+        <x-alert type="success" :session="session('success')"/>
+
         @if (session('err_msg'))
             <p class="text-danger">{{ session('err_msg') }}</p>
         @endif

@@ -16,6 +16,7 @@
         <form method="POST" action="{{ route('login') }}">
             @csrf
             <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
+
             @if ($errors->any())
                 <div class="alert alert-danger">
                     <ul>
@@ -25,6 +26,9 @@
                     </ul>
                 </div>
             @endif
+
+            <x-alert type="danger" :session="session('danger')"/>
+            
             <div class="form-floating">
                 <label for="floatingInput">メールアドレス</label>
                 <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">

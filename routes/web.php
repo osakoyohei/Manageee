@@ -15,12 +15,20 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', [AuthController::class, 'showLogin'])->name('showLogin');
+Route::group(['middleware' => ['guest']], function() {
+    //ログインフォーム表示
+    Route::get('/', [AuthController::class, 'showLogin'])->name('login.show');
 
-Route::post('/login', [AuthController::class, 'login'])->name('login');
+    //ログイン処理
+    Route::post('/login', [AuthController::class, 'login'])->name('login');
+});
 
-//ToDoリスト画面を表示
-Route::get('/todo_list', [TodoController::class, 'showList'])->name('todos');
+Route::group(['middleware' => ['auth']], function() {
+    //ToDoリスト画面を表示
+    Route::get('todo_list', [TodoController::class, 'showList'])->name('todos');
+    //ログアウト
+    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+});
 
 //ToDo登録画面を表示
 Route::get('/todo/create', [TodoController::class, 'showCreate'])->name('create');
