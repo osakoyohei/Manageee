@@ -14,7 +14,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function showList() {
+    public function showList()
+    {
         $todos = Todo::all();
         return view('todo.list', ['todos' => $todos]);
     }
@@ -25,7 +26,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function showDetail($id) {
+    public function showDetail($id)
+    {
         $todo = Todo::find($id);
         
         if (is_null($todo)) {
@@ -42,7 +44,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function showCreate() {
+    public function showCreate()
+    {
         return view('todo.form');
     }
 
@@ -52,7 +55,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function exeStore(TodoRequest $request) {
+    public function exeStore(TodoRequest $request)
+    {
         //ToDoのデータを受け取る
         $inputs = $request->all();
 
@@ -75,7 +79,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function showEdit($id) {
+    public function showEdit($id)
+    {
         $todo = Todo::find($id);
         
         if (is_null($todo)) {
@@ -92,7 +97,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function exeUpdate(TodoRequest $request) {
+    public function exeUpdate(TodoRequest $request)
+    {
         //ToDoのデータを受け取る
         $inputs = $request->all();
         
@@ -120,7 +126,8 @@ class TodoController extends Controller
      * @return view  
      *
      */
-    public function exeDelete($id) {
+    public function exeDelete($id)
+    {
         if (empty($id)) {
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todos'));
