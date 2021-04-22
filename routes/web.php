@@ -15,27 +15,27 @@ use App\Http\Controllers\Auth\AuthController;
 |
 */
 
-Route::get('/', [AuthController::class,'showLogin'])->name('showLogin');
+Route::get('/', [AuthController::class, 'showLogin'])->name('showLogin');
 
-Route::get('/login', [AuthController::class,'login'])->name('login');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
 
 //ToDoリスト画面を表示
-Route::get('/', [TodoController::class,'showList'])->name('todos');
+Route::get('/todo_list', [TodoController::class, 'showList'])->name('todos');
 
 //ToDo登録画面を表示
-Route::get('/todo/create', [TodoController::class,'showCreate'])->name('create');
+Route::get('/todo/create', [TodoController::class, 'showCreate'])->name('create');
 
 //ToDo登録
-Route::post('/todo/store', [TodoController::class,'exeStore'])->name('store');
+Route::post('/todo/store', [TodoController::class, 'exeStore'])->name('store');
 
 //ToDo詳細画面を表示
-Route::get('/todo/{id}', [TodoController::class,'showDetail'])->name('show');
+Route::get('/todo/{id}', [TodoController::class, 'showDetail'])->name('show');
 
 //ToDoの編集画面を表示
-Route::get('/todo/edit/{id}', [TodoController::class,'showEdit'])->name('edit');
+Route::get('/todo/edit/{id}', [TodoController::class, 'showEdit'])->name('edit');
 
 //ToDo編集
-Route::post('/todo/update', [TodoController::class,'exeUpdate'])->name('update');
+Route::post('/todo/update', [TodoController::class, 'exeUpdate'])->name('update');
 
 //ToDo削除
-Route::post('/todo/delete/{id}', [TodoController::class,'exeDelete'])->name('delete');
+Route::post('/todo/delete/{id}', [TodoController::class, 'exeDelete'])->name('delete');
