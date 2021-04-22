@@ -149,6 +149,8 @@ return [
     'attributes' => [
         'title' => 'タイトル',
         'content' => 'ToDoの内容',
+        'email' => 'メールアドレス',
+        'password' => 'パスワード',
     ],
 
 ];
