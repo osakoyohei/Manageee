@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\Auth\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,6 +14,10 @@ use App\Http\Controllers\TodoController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+Route::get('/', [AuthController::class,'showLogin'])->name('showLogin');
+
+Route::get('/login', [AuthController::class,'login'])->name('login');
 
 //ToDoリスト画面を表示
 Route::get('/', [TodoController::class,'showList'])->name('todos');
