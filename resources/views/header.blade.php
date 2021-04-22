@@ -8,4 +8,8 @@
             <a class="nav-item nav-link" href="{{ route('create') }}">ToDo追加</a>
         </div>
     </div>
+    <form action="{{ route('logout') }}" method="POST">
+        @csrf
+        <button>ログアウト</button>
+    </form>
 </nav>
