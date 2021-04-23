@@ -3,6 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
+
         <h2>ToDoリスト</h2>
         
         <x-alert type="success" :session="session('success')"/>
@@ -24,7 +25,7 @@
                 <td><button type="button" class="btn btn-primary" onclick="location.href='/todo/edit/{{ $todo->id }}'">編集</button></td>
                 <form method="POST" action="{{ route('delete', $todo->id) }}" onSubmit="return checkDelete()">
                 @csrf
-                    <td><button type="submit" class="btn btn-primary" onclick=>削除</button></td>
+                    <td><button type="submit" class="btn btn-danger" onclick=>削除</button></td>
                 </form>
             </tr>
             @endforeach
