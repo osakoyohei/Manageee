@@ -26,6 +26,7 @@ Route::group(['middleware' => ['guest']], function() {
 Route::group(['middleware' => ['auth']], function() {
     //ToDoリスト画面を表示
     Route::get('todo_list', [TodoController::class, 'showList'])->name('todos');
+    
     //ログアウト
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
