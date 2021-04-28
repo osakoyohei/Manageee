@@ -1,10 +1,10 @@
 @extends('layout')
-@section('title', 'ログインフォーム')
+@section('title', '新規登録フォーム')
 @section('content')
 <main class="form-signin">
     <form method="POST" action="{{ route('login') }}">
         @csrf
-        <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
+        <h1 class="h3 mb-3 fw-normal">新規登録フォーム</h1>
 
         @if ($errors->any())
             <div class="alert alert-danger">
@@ -17,7 +17,12 @@
         @endif
 
         <x-alert type="danger" :session="session('danger')"/>
-        
+
+        <div class="form-floating">
+            <label for="floatingInput">名前</label>
+            <input type="email" class="form-control" id="floatingInput" name="name" placeholder="名前">
+        </div>
+        <br>
         <div class="form-floating">
             <label for="floatingInput">メールアドレス</label>
             <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
@@ -28,7 +33,7 @@
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
         </div>
         <br>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">新規登録</button>
     </form>
 </main>
 @endsection

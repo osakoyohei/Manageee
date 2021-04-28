@@ -31,6 +31,13 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+//新規登録画面
+Route::get('/show/register', [AuthController::class, 'showRegister'])->name('register.show');
+
+//新規登録画面
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+
+
 //ToDo登録画面を表示
 Route::get('/todo/create', [TodoController::class, 'showCreate'])->name('create');
 
