@@ -82,13 +82,4 @@ class AuthController extends Controller
 
         return redirect()->route('login.show')->with('danger', 'ログアウトしました。');
     }
-
-    /**
-    * @return View
-    */
-    public function showRegister()
-    {
-        return view('login.register');
-    }
-    
 }

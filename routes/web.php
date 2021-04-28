@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,12 @@ Route::group(['middleware' => ['guest']], function() {
 
     //ログイン処理
     Route::post('/login', [AuthController::class, 'login'])->name('login');
+
+    //新規登録画面
+    Route::get('/show/register', [RegisterController::class, 'showRegister'])->name('register.show');
+
+    //新規登録処理
+    Route::post('/register', [RegisterController::class, 'register'])->name('register');
 });
 
 Route::group(['middleware' => ['auth']], function() {
@@ -30,12 +37,6 @@ Route::group(['middleware' => ['auth']], function() {
     //ログアウト
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
-
-//新規登録画面
-Route::get('/show/register', [AuthController::class, 'showRegister'])->name('register.show');
-
-//新規登録画面
-Route::post('/register', [AuthController::class, 'register'])->name('register');
 
 
 //ToDo登録画面を表示

@@ -16,6 +16,7 @@
             </div>
         @endif
 
+        <x-alert type="success" :session="session('success')"/>
         <x-alert type="danger" :session="session('danger')"/>
         
         <div class="form-floating">

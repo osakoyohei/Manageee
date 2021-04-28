@@ -151,6 +151,7 @@ return [
         'content' => 'ToDoの内容',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'name' => '名前',
     ],
 
 ];

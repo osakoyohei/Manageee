@@ -2,7 +2,7 @@
 @section('title', '新規登録フォーム')
 @section('content')
 <main class="form-signin">
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('register') }}">
         @csrf
         <h1 class="h3 mb-3 fw-normal">新規登録フォーム</h1>
 
@@ -20,7 +20,7 @@
 
         <div class="form-floating">
             <label for="floatingInput">名前</label>
-            <input type="email" class="form-control" id="floatingInput" name="name" placeholder="名前">
+            <input type="text" class="form-control" id="floatingInput" name="name" placeholder="名前">
         </div>
         <br>
         <div class="form-floating">
