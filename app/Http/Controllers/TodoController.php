@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
+use Illuminate\Support\Facades\Auth;
 
 class TodoController extends Controller
 {
@@ -16,7 +17,8 @@ class TodoController extends Controller
      */
     public function showList()
     {
-        $todos = Todo::all();
+        $user_id = Auth::id();
+        $todos = Todo::where('user_id', $user_id)->get();
         return view('todo.list', ['todos' => $todos]);
     }
 
@@ -57,12 +59,15 @@ class TodoController extends Controller
      */
     public function exeStore(TodoRequest $request)
     {
-        //ToDoのデータを受け取る
-        $inputs = $request->all();
-
+        $user_id = Auth::id();
+        
         \DB::beginTransaction();
         try {
-            Todo::create($inputs);
+            Todo::create([
+                'title' => $request['title'],
+                'content' => $request['content'],
+                'user_id' => $user_id,
+            ]);
             \DB::commit();
         } catch(\Throwable $e) {
             \DB::rollback();

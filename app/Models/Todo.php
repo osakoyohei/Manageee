@@ -14,6 +14,7 @@ class Todo extends Model
     //可変項目
     protected $fillable = [
         'title',
-        'content'
+        'content',
+        'user_id',
     ];
 }
