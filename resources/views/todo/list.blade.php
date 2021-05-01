@@ -4,7 +4,7 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
 
-        <h2>ToDoリスト</h2>
+        <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
         
         <x-alert type="success" :session="session('success')"/>
 
