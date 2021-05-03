@@ -74,8 +74,7 @@ class TodoController extends Controller
             abort(500);
         }
 
-        \Session::flash('err_msg', 'ToDoを登録しました。');
-        return redirect(route('todos'));
+        return redirect(route('todos'))->with('success', 'ToDoを登録しました！');
     }
 
     /**
@@ -121,8 +120,7 @@ class TodoController extends Controller
             abort(500);
         }
         
-        \Session::flash('err_msg', 'ToDoを更新しました。');
-        return redirect(route('todos'));
+        return redirect(route('todos'))->with('primary', 'ToDoを更新しました！');
     }
 
      /**
@@ -144,7 +142,6 @@ class TodoController extends Controller
             abort(500);
         }
         
-        \Session::flash('err_msg', '削除しました。');
-        return redirect(route('todos'));
+        return redirect(route('todos'))->with('danger', 'ToDoを削除しました！');
     }
 }

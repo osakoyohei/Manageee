@@ -62,7 +62,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'danger' => 'メールアドレスかパスワードが間違っています。',
+            'danger' => 'メールアドレスまたはパスワードが正しくありません。',
         ]);
     }
 
