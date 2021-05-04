@@ -38,6 +38,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('logout', [AuthController::class, 'logout'])->name('logout');
 });
 
+//ゲストユーザーログイン
+Route::get('/login/guest', [AuthController::class, 'guestLogin'])->name('login.guest');
 
 //ToDo登録画面を表示
 Route::get('/todo/create', [TodoController::class, 'showCreate'])->name('create');

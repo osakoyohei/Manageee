@@ -29,7 +29,11 @@
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
         </div>
         <br>
-        <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン</button>
+        <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
+    </form>
+    <br>
+    <form method="GET" action="{{ route('login.guest') }}">
+        <button class="w-100 btn btn-lg btn-success" type="submit">ゲストログイン </button>
     </form>
 </main>
 @endsection
