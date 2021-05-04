@@ -82,4 +82,19 @@ class AuthController extends Controller
 
         return redirect()->route('login.show')->with('danger', 'ログアウトしました。');
     }
+
+    /**
+     * ゲストログイン
+     */
+    public function guestLogin()
+    {
+        $email = 'guest@guest.jp';
+        $password = 'password';
+
+        if (Auth::attempt(['email' => $email, 'password' => $password])) {
+            return redirect()->route('todos');
+        }
+
+        return redirect()->route('login.show');
+    }
 }
