@@ -13,6 +13,7 @@
         @else
             <a class="btn btn-link" style="color:white;" href="{{ route('login.show') }}">ログイン</a>
             <a class="btn btn-link" style="color:white;" href="{{ route('register.show') }}">新規登録</a>
+            <a class="btn btn-link" style="color:white;" href="{{ route('login.guest') }}">ゲストログイン</a>
         @endif
     </div>
 </nav>
