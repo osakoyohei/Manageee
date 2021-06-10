@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('title', 'ToDoリスト')
 @section('content')
 <div class="row">

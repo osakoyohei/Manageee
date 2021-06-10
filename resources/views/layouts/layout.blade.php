@@ -9,15 +9,16 @@
 </head>
 <body>
     <header>
-        @include('header')
+        @include('layouts.header')
     </header>
     <br>
+    
     <div class="container">
         @yield('content')
     </div> 
 
     <footer class="footer bg-dark  fixed-bottom">
-        @include('footer')
+        @include('layouts.footer')
     </footer>
 </body>
 </html>

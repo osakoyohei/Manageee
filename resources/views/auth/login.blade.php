@@ -1,4 +1,4 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('title', 'ログインフォーム')
 @section('content')
 <main class="form-signin">
@@ -21,19 +21,15 @@
         
         <div class="form-floating">
             <label for="floatingInput">メールアドレス</label>
-            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="name@example.com">
+            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="メールアドレス">
         </div>
         <br>
         <div class="form-floating">
             <label for="floatingPassword">パスワード</label>
-            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="Password">
+            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
         </div>
         <br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
-    </form>
-    <br>
-    <form method="GET" action="{{ route('login.guest') }}">
-        <button class="w-100 btn btn-lg btn-success" type="submit">ゲストログイン </button>
     </form>
 </main>
 @endsection
