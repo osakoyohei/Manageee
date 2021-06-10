@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginFormRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -15,14 +15,14 @@ class LoginController extends Controller
      */
     public function showLogin()
     {
-        return view('login.login_form');
+        return view('auth.login');
     }
 
     /**
-     * @param App\Http\Requests\LoginFormRequest;
+     * @param App\Http\Requests\LoginRequest;
      * request
      */
-    public function login(LoginFormRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
