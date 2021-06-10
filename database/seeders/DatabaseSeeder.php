@@ -11,8 +11,18 @@ class DatabaseSeeder extends Seeder
      *
      * @return void
      */
+    // public function run()
+    // {
+    //     $this->call(TodosTableSeeder::class);
+    // }
+
+    /**
+     * Seed the application's database.
+     *
+     * @return void
+     */
     public function run()
     {
-        $this->call(TodosTableSeeder::class);
+        \App\Models\User::factory(2)->create();
     }
 }

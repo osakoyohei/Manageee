@@ -5,16 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Todo extends Model
+class Register extends Model
 {
     use HasFactory;
     //テーブル名
-    protected $table = 'todos';
+    protected $table = 'users';
 
     //可変項目
     protected $fillable = [
-        'title',
-        'content',
-        'user_id',
+        'name',
+        'email',
+        'password'
     ];
 }
