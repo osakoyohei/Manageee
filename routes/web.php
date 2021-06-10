@@ -2,8 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +18,10 @@ use App\Http\Controllers\RegisterController;
 
 Route::group(['middleware' => ['guest']], function() {
     //ログインフォーム表示
-    Route::get('/', [AuthController::class, 'showLogin'])->name('login.show');
+    Route::get('/', [LoginController::class, 'showLogin'])->name('login.show');
 
     //ログイン処理
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
 
     //新規登録画面
     Route::get('/show/register', [RegisterController::class, 'showRegister'])->name('register.show');
@@ -35,11 +35,11 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('todo_list', [TodoController::class, 'showList'])->name('todos');
     
     //ログアウト
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
 //ゲストユーザーログイン
-Route::get('/login/guest', [AuthController::class, 'guestLogin'])->name('login.guest');
+Route::get('/login/guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 
 //ToDo登録画面を表示
 Route::get('/todo/create', [TodoController::class, 'showCreate'])->name('create');

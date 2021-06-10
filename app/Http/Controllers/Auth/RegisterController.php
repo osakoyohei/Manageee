@@ -1,11 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Auth;
 
-use Illuminate\Http\Request;
-use App\Models\Register;
+use App\Http\Controllers\Controller;
 use App\Http\Requests\RegisterFormRequest;
+use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Register;
 use Illuminate\Support\Facades\Hash;
 
 class RegisterController extends Controller
