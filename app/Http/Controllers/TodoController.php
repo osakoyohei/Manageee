@@ -10,6 +10,14 @@ use Illuminate\Support\Facades\Auth;
 class TodoController extends Controller
 {
     /**
+     * @return View
+     */
+    public function index()
+    {
+        return view('todo.index');
+    }
+
+    /**
      * ToDoリストを表示する
      * 
      * @return view  

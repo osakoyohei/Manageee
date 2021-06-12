@@ -18,7 +18,7 @@ use App\Http\Controllers\Auth\RegisterController;
 
 Route::group(['middleware' => ['guest']], function() {
     //ログインフォーム表示
-    Route::get('/', [LoginController::class, 'showLogin'])->name('login.show');
+    Route::get('/show/login', [LoginController::class, 'showLogin'])->name('login.show');
 
     //ログイン処理
     Route::post('/login', [LoginController::class, 'login'])->name('login');
@@ -37,6 +37,9 @@ Route::group(['middleware' => ['auth']], function() {
     //ログアウト
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
+
+//トップページ
+Route::get('/', [TodoController::class, 'index'])->name('index');
 
 //ゲストユーザーログイン
 Route::get('/login/guest', [LoginController::class, 'guestLogin'])->name('login.guest');

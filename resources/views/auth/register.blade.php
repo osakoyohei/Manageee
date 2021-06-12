@@ -1,6 +1,9 @@
 @extends('layouts.layout')
 @section('title', '新規登録フォーム')
 @section('content')
+@push('css')
+    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+@endpush
 <main class="form-signin">
     <form method="POST" action="{{ route('register') }}">
         @csrf
