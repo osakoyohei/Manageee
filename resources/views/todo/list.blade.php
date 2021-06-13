@@ -5,6 +5,7 @@
     <div class="col-md-10 col-md-offset-2">
 
         <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
+        <h4>本日 : {{ now()->format('Y年m月d日') }}</h4><br>
         
         <x-alert type="success" :session="session('success')"/>
         <x-alert type="primary" :session="session('primary')"/>

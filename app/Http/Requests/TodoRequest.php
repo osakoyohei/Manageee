@@ -26,7 +26,6 @@ class TodoRequest extends FormRequest
         return [
             'title' =>  'required | max:100',
             'content' => 'required',
-            'deadline' => 'required'
         ];
     }
 }

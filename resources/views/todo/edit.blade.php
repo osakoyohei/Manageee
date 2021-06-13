@@ -40,23 +40,6 @@
                     </div>
                 @endif
             </div>
-            <div class="form-group">
-                <label for="deadline">
-                    締め切り日
-                </label>
-                <input
-                    id="deadline"
-                    name="deadline"
-                    class="form-control"
-                    value="{{ $todo->deadline }}"
-                    type="date"
-                >
-                @if ($errors->has('deadline'))
-                    <div class="text-danger">
-                        {{ $errors->first('deadline') }}
-                    </div>
-                @endif
-            </div>
             <div class="mt-5">
                 <button type="submit" class="btn btn-primary">
                     更新する
@@ -64,7 +47,6 @@
                 <a class="btn btn-secondary" href="{{ route('todos') }}">
                     キャンセル
                 </a>
-                
             </div>
         </form>
     </div>

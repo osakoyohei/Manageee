@@ -16,6 +16,5 @@ class Todo extends Model
         'title',
         'content',
         'user_id',
-        'deadline',
     ];
 }
