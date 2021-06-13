@@ -75,7 +75,6 @@ class TodoController extends Controller
                 'title' => $request['title'],
                 'content' => $request['content'],
                 'user_id' => $user_id,
-                'deadline' =>$request['deadline'],
             ]);
             \DB::commit();
         } catch(\Throwable $e) {
@@ -121,7 +120,6 @@ class TodoController extends Controller
             $todo->fill([
                 'title' => $inputs['title'],
                 'content' => $inputs['content'],
-                'deadline' =>$request['deadline'],
             ]);
             $todo->save();
             \DB::commit();

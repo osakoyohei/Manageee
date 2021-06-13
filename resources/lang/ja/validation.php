@@ -152,7 +152,6 @@ return [
         'email' => 'メールアドレス',
         'password' => 'パスワード',
         'name' => '名前',
-        'deadline' => '締め切り日',
     ],
 
 ];
