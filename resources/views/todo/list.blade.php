@@ -20,11 +20,13 @@
                     <th>登録日</th>
                     <th></th>
                     <th></th>
+                    <th></th>
                 </tr>
                 @foreach($todos as $todo)
                 <tr>
-                    <td><a href="/todo/{{ $todo->id }}">{{ $todo->title }}</a></td>
+                    <td>{{ $todo->title }}</td>
                     <td>{{ $todo->created_at->format('Y/m/d') }}</td>
+                    <td><button type="button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="fas fa-eye"></i></button></td>
                     <td><button type="button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
                     <form method="POST" action="{{ route('delete', $todo->id) }}" onSubmit="return checkDelete()">
                     @csrf
