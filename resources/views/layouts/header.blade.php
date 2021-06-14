@@ -6,7 +6,7 @@
                     <a class="btn btn-link" style="color:white;" href="{{ route('todos') }}">ToDoリスト <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a class="btn btn-link" style="color:white;" href="{{ route('create') }}">ToDo追加 <span class="sr-only">(current)</span></a>
+                    <a class="btn btn-link" style="color:white;" href="{{ route('create') }}">ToDo登録 <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form action="{{ route('logout') }}" method="POST">
