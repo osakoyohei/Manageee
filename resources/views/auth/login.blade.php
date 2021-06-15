@@ -2,7 +2,11 @@
 @section('title', 'ログインフォーム')
 @section('content')
 @push('css')
+    <!-- form.css -->
     <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+
+    <!-- reCAPTCHA v2 -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
 @endpush
 <main class="form-signin">
     <form method="POST" action="{{ route('login') }}">
@@ -30,6 +34,10 @@
         <div class="form-floating">
             <label for="floatingPassword">パスワード</label>
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
+        </div>
+        <br>
+        <div class="form-floating">
+            <div class="g-recaptcha" data-sitekey="6Lc0bzEbAAAAALLO2Aoz2zW5i94i6INywigbzDMJ"></div>
         </div>
         <br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
