@@ -153,6 +153,7 @@ return [
         'content' => '内容',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'password_confirm' => 'パスワード確認',
         'name' => '名前',
     ],
 

@@ -36,6 +36,11 @@
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
         </div>
         <br>
+        <div class="form-floating">
+            <label for="floatingPassword">パスワード確認</label>
+            <input type="password" class="form-control" id="floatingPassword" name="password_confirm" placeholder="パスワード確認">
+        </div>
+        <br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">新規登録</button>
     </form>
 </main>
