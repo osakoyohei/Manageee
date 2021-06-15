@@ -27,6 +27,13 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
+        // パスワード一致確認
+        if ($request['password'] != $request['password_confirm']) {
+            return back()->withErrors([
+                'danger' => 'パスワードが一致しません',
+            ]);
+        }
+
         \DB::beginTransaction();
         try {
             Register::create([
