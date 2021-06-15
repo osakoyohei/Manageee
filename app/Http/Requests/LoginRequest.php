@@ -26,6 +26,14 @@ class LoginRequest extends FormRequest
         return [
             'email' => 'required|max:255',
             'password' => 'required',
+            'g-recaptcha-response' => ['required', new \Arcanedev\NoCaptcha\Rules\CaptchaRule],
+        ];
+    }
+    
+    public function messages()
+    {
+        return [
+            'g-recaptcha-response.required' => 'チェックボックスにチェックをしてください。',     // 'v2のチェックボックスなら、チェックがされていないときのメッセージ',
         ];
     }
 }
