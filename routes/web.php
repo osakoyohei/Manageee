@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -61,3 +63,16 @@ Route::post('/todo/update', [TodoController::class, 'exeUpdate'])->name('update'
 
 //ToDo削除
 Route::post('/todo/delete/{id}', [TodoController::class, 'exeDelete'])->name('delete');
+
+
+//パスワード再設定メールアドレス入力フォーム表示
+Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+
+//パスワード再設定メール送信
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+//パスワード再設定入力フォーム表示
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+//パスワード再設定
+Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
