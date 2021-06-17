@@ -42,5 +42,8 @@
         <br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
     </form>
+    <br>
+    <a href="{{ route('password.request') }}">パスワードお忘れの方</a>
+
 </main>
 @endsection
