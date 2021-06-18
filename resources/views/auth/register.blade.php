@@ -22,13 +22,13 @@
         <x-alert type="danger" :session="session('danger')"/>
 
         <div class="form-floating">
-            <label for="floatingInput">名前</label>
-            <input type="text" class="form-control" id="floatingInput" name="name" placeholder="名前">
+            <label for="floatingName">名前</label>
+            <input type="text" class="form-control" id="floatingName" name="name" placeholder="名前">
         </div>
         <br>
         <div class="form-floating">
-            <label for="floatingInput">メールアドレス</label>
-            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="メールアドレス">
+            <label for="floatingEmail">メールアドレス</label>
+            <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="メールアドレス">
         </div>
         <br>
         <div class="form-floating">
@@ -37,8 +37,8 @@
         </div>
         <br>
         <div class="form-floating">
-            <label for="floatingPassword">パスワード確認</label>
-            <input type="password" class="form-control" id="floatingPassword" name="password_confirm" placeholder="パスワード確認">
+            <label for="floatingPasswordConfirm">パスワード確認</label>
+            <input type="password" class="form-control" id="floatingPasswordConfirm" name="password_confirm" placeholder="パスワード確認">
         </div>
         <br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">新規登録</button>
