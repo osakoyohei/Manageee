@@ -27,8 +27,8 @@
         <x-alert type="danger" :session="session('danger')"/>
         
         <div class="form-floating">
-            <label for="floatingInput">メールアドレス</label>
-            <input type="email" class="form-control" id="floatingInput" name="email" placeholder="メールアドレス">
+            <label for="floatingEmail">メールアドレス</label>
+            <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="メールアドレス">
         </div>
         <br>
         <div class="form-floating">
@@ -37,13 +37,12 @@
         </div>
         <br>
         <div class="form-floating">
-            <div class="g-recaptcha" data-sitekey="6Lc0bzEbAAAAALLO2Aoz2zW5i94i6INywigbzDMJ"></div>
+            <div class="g-recaptcha" data-sitekey="{{ config('no-captcha.sitekey', 'no-captcha-sitekey') }}"></div>
         </div>
         <br>
         <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
     </form>
     <br>
     <a href="{{ route('password.request') }}">パスワードお忘れの方</a>
-
 </main>
 @endsection
