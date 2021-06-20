@@ -11,6 +11,9 @@ class User extends Authenticatable
 {
     use HasFactory, Notifiable;
 
+    // remember_tokenカラム使わない
+    protected $rememberTokenName = false;
+
     /**
      * The attributes that are mass assignable.
      *

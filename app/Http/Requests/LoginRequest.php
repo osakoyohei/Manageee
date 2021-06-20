@@ -33,7 +33,8 @@ class LoginRequest extends FormRequest
     public function messages()
     {
         return [
-            'g-recaptcha-response.required' => 'チェックボックスにチェックをしてください。',     // 'v2のチェックボックスなら、チェックがされていないときのメッセージ',
+            // 'v2のチェックボックスで、チェックがされていないときのメッセージ'
+            'g-recaptcha-response.required' => '私はロボットではありませんにチェックをしてください。',
         ];
     }
 }
