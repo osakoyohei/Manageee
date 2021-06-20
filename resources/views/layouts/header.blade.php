@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ route('index') }}">Manageee</a>
+    <a class="navbar-brand" href="{{ route('index') }}">TOPページ</a>
         @if(Auth::check())
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
