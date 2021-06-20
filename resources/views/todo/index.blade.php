@@ -5,7 +5,7 @@
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 @endpush
 <div class="index">
-    <h1>ManageeeでToDoを管理！</h1>
+    <h1>ToDoを管理！</h1>
 
     やらないといけない作業があるのにどんどん後回しにしてしまい、結局作業をするのを忘れてしまった経験はありませんか？<br>
     そこで活用できるのが、「ToDoリスト」です！<br>

@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class TodoController extends Controller
 {
@@ -27,7 +29,11 @@ class TodoController extends Controller
     {
         $user_id = Auth::id();
         $todos = Todo::where('user_id', $user_id)->get();
-        return view('todo.list', ['todos' => $todos]);
+        $today = Carbon::today();
+        return view('todo.list', [
+            'todos' => $todos,
+            'today' => $today,
+        ]);
     }
 
     /**
@@ -129,6 +135,28 @@ class TodoController extends Controller
         }
         
         return redirect(route('todos'))->with('primary', 'ToDoを更新しました！');
+    }
+
+    /**
+     * ToDoを完了する
+     * @param int $id
+     * @return view  
+     *
+     */
+    public function exeDone($id)
+    {
+        if (empty($id)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('todos'));
+        }
+        
+        try {
+            Todo::destroy($id);
+        } catch(\Throwable $e) {
+            abort(500);
+        }
+        
+        return redirect(route('todos'))->with('danger', 'ToDoを完了しました！');
     }
 
      /**

@@ -61,6 +61,9 @@ Route::get('/todo/edit/{id}', [TodoController::class, 'showEdit'])->name('edit')
 //ToDo編集
 Route::post('/todo/update', [TodoController::class, 'exeUpdate'])->name('update');
 
+//ToDo完了
+Route::post('/todo/Done/{id}', [TodoController::class, 'exeDone'])->name('done');
+
 //ToDo削除
 Route::post('/todo/delete/{id}', [TodoController::class, 'exeDelete'])->name('delete');
 

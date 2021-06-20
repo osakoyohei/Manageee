@@ -31,18 +31,24 @@
             <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="メールアドレス">
         </div>
         <br>
+
         <div class="form-floating">
             <label for="floatingPassword">パスワード</label>
             <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
         </div>
         <br>
+
         <div class="form-floating">
             <div class="g-recaptcha" data-sitekey="{{ config('no-captcha.sitekey', 'no-captcha-sitekey') }}"></div>
         </div>
         <br>
+        
         <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
     </form>
     <br>
-    <a href="{{ route('password.request') }}">パスワードお忘れの方</a>
+
+    <div class="password-reset">
+        <a href="{{ route('password.request') }}">パスワードお忘れの方</a>
+    </div>
 </main>
 @endsection

@@ -8,7 +8,7 @@
         <h4>本日 : {{ now()->format('Y年m月d日') }}</h4><br>
 
         @if (session('status'))
-            <div class="alert alert-success" role="alert">
+            <div class="alert alert-primary" role="alert">
                 {{ session('status') }}
             </div>
         @endif
@@ -24,6 +24,7 @@
                 <tr>
                     <th>やること</th>
                     <th>登録日</th>
+                    <th>経過日数</th>
                     <th></th>
                     <th></th>
                     <th></th>
@@ -32,11 +33,12 @@
                 <tr>
                     <td>{{ $todo->title }}</td>
                     <td>{{ $todo->created_at->format('Y/m/d') }}</td>
-                    <td><button type="button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="fas fa-eye"></i></button></td>
+                    <td>{{ $today->diffInDays($todo->created_at->format('Y/m/d')) }}日</td>
+                    <td><button type="button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
                     <td><button type="button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
-                    <form method="POST" action="{{ route('delete', $todo->id) }}" onSubmit="return checkDelete()">
+                    <form method="POST" action="{{ route('done', $todo->id) }}" onSubmit="return checkDelete()">
                     @csrf
-                        <td><button type="submit"><i class="fas fa-trash-alt"></i></button></td>
+                        <td><button type="submit"><i class="fas fa-check"></i></button></td>
                     </form>
                 </tr>
                 @endforeach
@@ -46,7 +48,7 @@
 </div>
 <script>
 function checkDelete(){
-    if(window.confirm('削除してよろしいですか？')){
+    if(window.confirm('ToDoを完了してよろしいですか？')){
         return true;
     } else {
         return false;
