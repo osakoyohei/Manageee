@@ -4,9 +4,6 @@
 <div class="row">
     <div class="col-md-10 col-md-offset-2">
 
-        <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
-        <h4>本日 : {{ now()->format('Y年m月d日') }}</h4><br>
-
         @if (session('status'))
             <div class="alert alert-primary" role="alert">
                 {{ session('status') }}
@@ -16,6 +13,10 @@
         <x-alert type="success" :session="session('success')"/>
         <x-alert type="primary" :session="session('primary')"/>
         <x-alert type="danger" :session="session('danger')"/>
+
+
+        <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
+        <h4>本日 : {{ now()->format('Y年m月d日') }}</h4><br>
 
         @if(empty($todos[0]['user_id']))
             <h5>ToDoが登録されていません。</h5>
