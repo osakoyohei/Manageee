@@ -21,7 +21,6 @@
         </div>
     @else
         <div class="logout-user">
-            <a href="{{ route('login.show') }}" class="button-login">はじめる</a>
             <a href="{{ route('login.guest') }}" class="button-guest">お試しはこちら</a>
         </div>
     @endif
@@ -44,6 +43,6 @@
         ToDoには「ある程度、この日時までには終える必要がある」というニュアンスは含みますが、<br>
         はっきりとは期限が決まっているわけではありません。<br>
     </div>
-    
+
 </div>
 @endsection
