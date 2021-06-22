@@ -62,7 +62,7 @@ class TodoController extends Controller
      */
     public function showCreate()
     {
-        return view('todo.form');
+        return view('todo.todo_form');
     }
 
     /**
@@ -134,7 +134,7 @@ class TodoController extends Controller
             abort(500);
         }
         
-        return redirect(route('todos'))->with('primary', 'ToDoを更新しました！');
+        return redirect(route('todos'))->with('success', 'ToDoを更新しました！');
     }
 
     /**

@@ -1,14 +1,13 @@
 @extends('layouts.layout')
-@section('title', 'ToDo編集')
+@section('title', 'ToDo登録')
 @push('css')
-    <link href="{{ asset('css/edit.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/todo_form.css') }}" rel="stylesheet">
 @endpush
 @section('content')
-<div class="edit">
-    <h2>ToDo編集</h2>
-    <form method="POST" action="{{ route('update') }}" onSubmit="return checkSubmit()">
+<div class="todo_form">
+    <h2>ToDo登録</h2>
+    <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()">
     @csrf
-        <input type="hidden" name="id" value="{{ $todo->id }}">
         <div class="form-group">
             <label for="title">
                 やること
@@ -17,7 +16,7 @@
                 id="title"
                 name="title"
                 class="form-control"
-                value="{{ $todo->title }}"
+                value="{{ old('title') }}"
                 type="text"
             >
             @if ($errors->has('title'))
@@ -35,7 +34,7 @@
                 name="content"
                 class="form-control"
                 rows="4"
-            >{{ $todo->content }}</textarea>
+            >{{ old('content') }}</textarea>
             @if ($errors->has('content'))
                 <div class="text-danger">
                     {{ $errors->first('content') }}
@@ -44,7 +43,7 @@
         </div>
         <div class="mt-5">
             <button type="submit" class="btn btn-primary">
-                更新する
+                登録する
             </button>
             <a class="btn btn-secondary" href="{{ route('todos') }}">
                 キャンセル
@@ -54,7 +53,7 @@
 </div>
 <script>
 function checkSubmit(){
-    if(window.confirm('更新してよろしいですか？')){
+    if(window.confirm('登録してよろしいですか？')){
         return true;
     } else {
         return false;

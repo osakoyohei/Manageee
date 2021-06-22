@@ -1,51 +1,48 @@
 @extends('layouts.layout')
 @section('title', '新規登録フォーム')
-@section('content')
 @push('css')
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
 @endpush
-<main class="form-signin">
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
-        <h1 class="h3 mb-3 fw-normal">新規登録フォーム</h1>
+@section('content')
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-
-        <x-alert type="danger" :session="session('danger')"/>
-
-        <div class="form-floating">
-            <label for="floatingName">名前</label>
-            <input type="text" class="form-control" id="floatingName" name="name" placeholder="名前">
-        </div>
-        <br>
-
-        <div class="form-floating">
-            <label for="floatingEmail">メールアドレス</label>
-            <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="メールアドレス">
-        </div>
-        <br>
-
-        <div class="form-floating">
-            <label for="floatingPassword">パスワード</label>
-            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
-        </div>
-        <br>
-
-        <div class="form-floating">
-            <label for="floatingPasswordConfirm">パスワード確認</label>
-            <input type="password" class="form-control" id="floatingPasswordConfirm" name="password_confirm" placeholder="パスワード確認">
-        </div>
-        <br>
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         
-        <button class="w-100 btn btn-lg btn-primary" type="submit">新規登録</button>
-    </form>
-</main>
+<x-alert type="success" :session="session('success')"/>
+<x-alert type="danger" :session="session('danger')"/>
+
+<form method="POST" action="{{ route('register') }}" class="form-signin">
+@csrf
+    <h1>新規登録フォーム</h1><br>
+
+    <div class="form-label-group">
+        <input type="name" id="inputName" class="form-control" name="name" placeholder="名前" required autofocus>
+        <label for="inputName">名前</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="メールアドレス" required>
+        <label for="inputEmail">メールアドレス</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" class="form-control" name="password"placeholder="パスワード" required>
+        <label for="inputPassword">パスワード</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="inputPasswordConfirm" class="form-control" name="password_confirmation" placeholder="パスワード確認" required>
+        <label for="inputPasswordConfirm">パスワード確認</label>
+    </div>
+    <br>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">新規登録</button>
+</form>
 @endsection
