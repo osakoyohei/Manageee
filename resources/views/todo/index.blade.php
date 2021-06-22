@@ -1,14 +1,14 @@
 @extends('layouts.layout')
 @section('title', 'ToDoList')
-@section('content')
 @push('css')
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 @endpush
+@section('content')
 <div class="index">
 
     <x-alert type="danger" :session="session('danger')"/>
 
-    <div class='title'>
+    <div class="title">
         <h1>ToDoListで作業効率向上を目指す！</h1>
         <h4>やらないといけない作業があるのにどんどん後回しにしてしまい、</h4>
         <h4>結局作業をするのを忘れてしまった経験はありませんか？</h4>
@@ -30,14 +30,14 @@
     </div>
     
     <div class="todolist-explanation">
-        <h2><span class="explanation_under">ToDoリストとは？</span></h2>
+        <h2><span class="explanation-under">ToDoリストとは？</span></h2>
         ToDoリストとはやることリストとも言われ、頭の中にあるやるべきことを整理するのに使われます。<br>
         やるべきことをはっきりさせることで、今自分が何をすべきなのかということが明確になり、<br>
         ToDoの抜け漏れを防ぎ、実行までしっかり管理することができるようになります。<br>
     </div>
 
     <div class="todo-explanation">
-        <h2><span class="explanation_under">ToDoとは？</span></h2>
+        <h2><span class="explanation-under">ToDoとは？</span></h2>
         「ToDo」とは、「いつかするべきこと、しなければならないこと」を意味する言葉です。<br>
         ある作業をしないといけないが、明確な期限が決まっていないものがToDoと言えます。<br>
         ToDoには「ある程度、この日時までには終える必要がある」というニュアンスは含みますが、<br>

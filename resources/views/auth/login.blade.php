@@ -1,54 +1,47 @@
 @extends('layouts.layout')
 @section('title', 'ログインフォーム')
-@section('content')
 @push('css')
     <!-- form.css -->
-    <link href="{{ asset('css/form.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
 
     <!-- reCAPTCHA v2 -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
 @endpush
-<main class="form-signin">
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
-        <h1 class="h3 mb-3 fw-normal">ログインフォーム</h1>
+@section('content')
 
-        @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                        <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         
-        <x-alert type="success" :session="session('success')"/>
-        <x-alert type="danger" :session="session('danger')"/>
-        
-        <div class="form-floating">
-            <label for="floatingEmail">メールアドレス</label>
-            <input type="email" class="form-control" id="floatingEmail" name="email" placeholder="メールアドレス">
-        </div>
-        <br>
+<x-alert type="success" :session="session('success')"/>
+<x-alert type="danger" :session="session('danger')"/>
 
-        <div class="form-floating">
-            <label for="floatingPassword">パスワード</label>
-            <input type="password" class="form-control" id="floatingPassword" name="password" placeholder="パスワード">
-        </div>
-        <br>
+<form method="POST" action="{{ route('login') }}" class="form-signin">
+@csrf
+    <h1>ログインフォーム</h1><br>
+    <div class="form-label-group">
+        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="メールアドレス" required autofocus>
+        <label for="inputEmail">メールアドレス</label>
+    </div>
 
-        <div class="form-floating">
-            <div class="g-recaptcha" data-sitekey="{{ config('no-captcha.sitekey', 'no-captcha-sitekey') }}"></div>
-        </div>
-        <br>
-        
-        <button class="w-100 btn btn-lg btn-primary" type="submit">ログイン </button>
-    </form>
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="パスワード" required>
+        <label for="inputPassword">パスワード</label>
+    </div>
+    
+    <div class="g-recaptcha" data-sitekey="{{ config('no-captcha.sitekey', 'no-captcha-sitekey') }}"></div>
     <br>
+
+    <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button><br>
 
     <div class="password-reset">
         <a href="{{ route('password.request') }}">パスワードお忘れの方</a>
     </div>
-</main>
+</form>
 @endsection

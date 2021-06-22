@@ -1,0 +1,49 @@
+.list {
+    width: 100%;
+    max-width: 900px;
+    min-width :600px;
+    padding: 15px;
+    margin: auto;
+}
+
+i {
+    color: white;
+}
+
+.list-button {
+    background-color: blue;
+    border: blue;
+    border-radius: 15px;
+    padding: 0.3em 0.6em;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.edit-button {
+    background-color: green;
+    border: green;
+    border-radius: 15px;
+    padding: 0.3em 0.6em;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+.delete-button {
+    background-color: red;
+    border: red;
+    border-radius: 15px;
+    padding: 0.3em 0.6em;
+    margin-top: -5px;
+    margin-bottom: -5px;
+}
+
+table th {
+    background: #e9ecef;
+}
+
+table td {
+	background: white;
+}
+table tr:nth-child(odd) td {
+	background: #e9ecef;
+}

@@ -32,7 +32,7 @@ class LoginController extends Controller
         if (!is_null($user)) {
             if ($user->locked_flg === 1) {
                 return back()->withErrors([
-                    'danger' => 'アカウントがロックされています。',
+                    'danger' => 'アカウントがロックされています！',
                 ]);
             }
 
@@ -55,14 +55,14 @@ class LoginController extends Controller
                 $user->locked_flg = 1;
                 $user->save();
                 return back()->withErrors([
-                    'danger' => 'アカウントがロックされました。',
+                    'danger' => 'アカウントがロックされました！',
                 ]);
             }
             $user->save();
         }
 
         return back()->withErrors([
-            'danger' => 'メールアドレスまたはパスワードが正しくありません。',
+            'danger' => 'メールアドレスまたはパスワードが正しくありません！',
         ]);
     }
 
@@ -80,7 +80,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('index')->with('danger', 'ログアウトしました。');
+        return redirect()->route('index')->with('danger', 'ログアウトしました！');
     }
 
     /**
