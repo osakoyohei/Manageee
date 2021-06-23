@@ -27,13 +27,6 @@ class RegisterController extends Controller
      */
     public function register(RegisterRequest $request)
     {
-        // パスワード一致確認
-        if ($request['password'] != $request['password_confirmation']) {
-            return back()->withErrors([
-                'danger' => 'パスワードが一致しません',
-            ]);
-        }
-
         \DB::beginTransaction();
         try {
             Register::create([
@@ -47,6 +40,6 @@ class RegisterController extends Controller
             abort(500);
         }
         
-        return redirect()->route('login.show')->with('success', '新規登録しました！');
+        return redirect(route('login.show'))->with('success', '新規登録完了しました！');
     }
 }

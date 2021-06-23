@@ -4,41 +4,35 @@
     <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
 @endpush
 @section('content')
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        
-<x-alert type="success" :session="session('success')"/>
-<x-alert type="danger" :session="session('danger')"/>
-
 <form method="POST" action="{{ route('register') }}" class="form-signin">
 @csrf
     <h1>新規登録フォーム</h1><br>
 
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <h6>・{{ $error }}</h6>
+            @endforeach
+        </div>
+    @endif
+
     <div class="form-label-group">
-        <input type="name" id="inputName" class="form-control" name="name" placeholder="名前" required autofocus>
+        <input type="name" id="inputName" name="name" class="form-control" value="{{ old('name') }}" placeholder="名前">
         <label for="inputName">名前</label>
     </div>
 
     <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="メールアドレス" required>
+        <input type="text" id="inputEmail" name="email" class="form-control" value="{{ old('email') }}" placeholder="メールアドレス">
         <label for="inputEmail">メールアドレス</label>
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" name="password"placeholder="パスワード" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード">
         <label for="inputPassword">パスワード</label>
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPasswordConfirm" class="form-control" name="password_confirmation" placeholder="パスワード確認" required>
+        <input type="password" id="inputPasswordConfirm" name="password_confirmation" class="form-control" placeholder="パスワード確認">
         <label for="inputPasswordConfirm">パスワード確認</label>
     </div>
     <br>

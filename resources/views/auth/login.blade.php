@@ -8,33 +8,32 @@
     <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
 @endpush
 @section('content')
-
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
-        
-<x-alert type="success" :session="session('success')"/>
-<x-alert type="danger" :session="session('danger')"/>
-
 <form method="POST" action="{{ route('login') }}" class="form-signin">
 @csrf
+
+    <x-alert type="success" :session="session('success')"/>
+    <x-alert type="danger" :session="session('danger')"/>
+
     <h1>ログインフォーム</h1><br>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <h6>・{{ $error }}</h6>
+            @endforeach
+        </div>
+    @endif
+
     <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control" name="email" placeholder="メールアドレス" required autofocus>
+        <input type="text" id="inputEmail" name="email" class="form-control" value="{{ old('email') }}" placeholder="メールアドレス">
         <label for="inputEmail">メールアドレス</label>
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="パスワード" required>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード">
         <label for="inputPassword">パスワード</label>
     </div>
-    
+
     <div class="g-recaptcha" data-sitekey="{{ config('no-captcha.sitekey', 'no-captcha-sitekey') }}"></div>
     <br>
 
