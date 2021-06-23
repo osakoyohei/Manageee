@@ -9,33 +9,24 @@
     <form method="POST" action="{{ route('update') }}" onSubmit="return checkSubmit()">
     @csrf
         <input type="hidden" name="id" value="{{ $todo->id }}">
+        
         <div class="form-group">
             <label for="title">
                 やること
             </label>
-            <input
-                id="title"
-                name="title"
-                class="form-control"
-                value="{{ $todo->title }}"
-                type="text"
-            >
+            <input type="text" id="title" name="title" class="form-control" value="{{ $todo->title }}" >
             @if ($errors->has('title'))
                 <div class="text-danger">
                     {{ $errors->first('title') }}
                 </div>
             @endif
         </div>
+
         <div class="form-group">
             <label for="content">
                 内容
             </label>
-            <textarea
-                id="content"
-                name="content"
-                class="form-control"
-                rows="4"
-            >{{ $todo->content }}</textarea>
+            <textarea id="content" name="content" class="form-control" rows="4">{{ $todo->content }}</textarea>
             @if ($errors->has('content'))
                 <div class="text-danger">
                     {{ $errors->first('content') }}

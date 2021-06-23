@@ -74,8 +74,8 @@ Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequest
 //パスワード再設定メール送信
 Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
 
-//パスワード再設定入力フォーム表示
+//パスワードリセット入力フォーム表示
 Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 
-//パスワード再設定
-Route::post('/password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
+//パスワードリセット
+Route::post('/password/reset', [ResetPasswordController::class, 'resetPassword'])->name('password.update');

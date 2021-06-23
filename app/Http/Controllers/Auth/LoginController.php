@@ -44,7 +44,7 @@ class LoginController extends Controller
                     $user->save();
                 }
                 
-                return redirect()->route('todos')->with('success', 'ログインに成功しました！');
+                return redirect(route('todos'))->with('success', 'ログインに成功しました！');
             }    
 
             //ログイン失敗したらエラーカウントを1増やす
@@ -62,7 +62,7 @@ class LoginController extends Controller
         }
 
         return back()->withErrors([
-            'danger' => 'メールアドレスまたはパスワードが正しくありません！',
+            'danger' => 'メールアドレスまたはパスワードが不正です。',
         ]);
     }
 
@@ -80,7 +80,7 @@ class LoginController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('index')->with('danger', 'ログアウトしました！');
+        return redirect(route('index'))->with('danger', 'ログアウトしました！');
     }
 
     /**
@@ -92,9 +92,9 @@ class LoginController extends Controller
         $password = 'password';
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('todos')->with('success', 'ゲストログインに成功しました！');
+            return redirect(route('todos'))->with('success', 'ゲストログインに成功しました！');
         }
 
-        return redirect()->route('login.show');
+        return redirect(route('login.show'));
     }
 }

@@ -12,35 +12,26 @@
             <label for="title">
                 やること
             </label>
-            <input
-                id="title"
-                name="title"
-                class="form-control"
-                value="{{ old('title') }}"
-                type="text"
-            >
+            <input type="text" id="title" name="title" class="form-control" value="{{ old('title') }}">
             @if ($errors->has('title'))
                 <div class="text-danger">
                     {{ $errors->first('title') }}
                 </div>
             @endif
         </div>
+
         <div class="form-group">
             <label for="content">
                 内容
             </label>
-            <textarea
-                id="content"
-                name="content"
-                class="form-control"
-                rows="4"
-            >{{ old('content') }}</textarea>
+            <textarea id="content" name="content" class="form-control" rows="4">{{ old('content') }}</textarea>
             @if ($errors->has('content'))
                 <div class="text-danger">
                     {{ $errors->first('content') }}
                 </div>
             @endif
         </div>
+
         <div class="mt-5">
             <button type="submit" class="btn btn-primary">
                 登録する

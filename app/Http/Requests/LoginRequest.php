@@ -24,8 +24,8 @@ class LoginRequest extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|max:255',
-            'password' => 'required',
+            'email' => 'required|email|max:255|regex:/^[!-~]+$/',
+            'password' => 'required|min:8|regex:/^[!-~]+$/',
             'g-recaptcha-response' => ['required', new \Arcanedev\NoCaptcha\Rules\CaptchaRule],
         ];
     }
@@ -34,7 +34,7 @@ class LoginRequest extends FormRequest
     {
         return [
             // 'v2のチェックボックスで、チェックがされていないときのメッセージ'
-            'g-recaptcha-response.required' => '私はロボットではありませんにチェックをしてください。',
+            'g-recaptcha-response.required' => 'チェックボックスにチェックをしてください。',
         ];
     }
 }

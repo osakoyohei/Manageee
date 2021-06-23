@@ -1,5 +1,5 @@
 @extends('layouts.layout')
-@section('title', '再設定メールアドレス送信フォーム')
+@section('title', 'パスワード再設定メールアドレス送信フォーム')
 @push('css')
     <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
 @endpush
@@ -7,30 +7,27 @@
 <form method="POST" action="{{ route('password.email') }}" class="form-signin">
 @csrf
 
-    <!-- @if ($errors->any())
-        <div class="alert alert-danger">
-            <ul>
-                @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                @endforeach
-            </ul>
+    @if (session('status'))
+        <div class="alert alert-success" role="alert">
+            {{ session('status') }}
         </div>
     @endif
-             -->
-    <x-alert type="success" :session="session('success')"/>
-    <x-alert type="danger" :session="session('danger')"/>
 
     <h1>パスワードの再設定</h1><br>
+
+    @if ($errors->any())
+        <div class="alert alert-danger">
+            @foreach ($errors->all() as $error)
+                <h6>・{{ $error }}</h6>
+            @endforeach
+        </div>
+    @endif
+
     <div class="form-label-group">
-        <input type="email" id="inputEmail" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" placeholder="メールアドレス" required autocomplete="email" autofocus>
+        <input type="text" id="inputEmail" class="form-control" name="email" value="{{ old('email') }}" placeholder="メールアドレス">
         <label for="inputEmail">メールアドレス</label>
     </div>
     <br>
-    @error('email')
-        <span class="invalid-feedback" role="alert">
-            <strong>{{ $message }}</strong>
-        </span>
-    @enderror
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">パスワード再設定メール送信</button>
 </form>
