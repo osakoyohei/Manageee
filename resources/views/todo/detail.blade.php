@@ -5,7 +5,7 @@
 @endpush
 @section('content')
 <div class="detail">
-    <h2 class="title">ToDoの詳細</h2>
+    <h2 class="title">ToDo詳細</h2>
     <form method="POST" action="{{ route('delete', $todo->id) }}" onSubmit="return checkDelete()">
     @csrf
         <button type="submit" class="delete-button">削除</button>
