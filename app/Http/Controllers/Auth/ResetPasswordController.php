@@ -4,6 +4,9 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use App\Http\Requests\ResetPasswordRequest;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
 
 class ResetPasswordController extends Controller
 {
@@ -20,12 +23,12 @@ class ResetPasswordController extends Controller
 
     use ResetsPasswords;
 
-    /**
-     * Where to redirect users after resetting their password.
-     *
-     * @var string
-     */
-    protected $redirectTo = '/todo_list';
+    // /**
+    //  * Where to redirect users after resetting their password.
+    //  *
+    //  * @var string
+    //  */
+    // protected $redirectTo = '/';
     
     /**
      * Create a new controller instance.
@@ -36,4 +39,26 @@ class ResetPasswordController extends Controller
     {
         $this->middleware('guest');
     }
+
+    protected function resetPassword(ResetPasswordRequest $request)
+    {
+        $user = User::where('email', '=', $request['email'])->first();
+        if (is_null($user)) {
+            return back()->withErrors(['danger' => 'メールアドレスに一致するユーザーがいません。']);
+        }
+
+        \DB::beginTransaction();
+        try {
+            User::where('id', '=', $user['id'])->update([
+                'password' => Hash::make($request['password'])
+            ]);
+            \DB::commit();
+        } catch(\Throwable $e) {
+            \DB::rollback();
+            abort(500);
+        }
+        
+        return redirect(route('login.show'))->with('success', 'パスワードをリセットしました。');
+    }
+
 }
