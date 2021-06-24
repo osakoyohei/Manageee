@@ -39,7 +39,7 @@ class TodoController extends Controller
     /**
      * ToDoの詳細を表示する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function showDetail($id)
@@ -57,7 +57,7 @@ class TodoController extends Controller
     /**
      * ToDo登録画面を表示する
      * 
-     * @return view  
+     * @return view
      *
      */
     public function showCreate()
@@ -68,7 +68,7 @@ class TodoController extends Controller
     /**
      * ToDoを登録する
      * 
-     * @return view  
+     * @return view
      *
      */
     public function exeStore(TodoRequest $request)
@@ -94,7 +94,7 @@ class TodoController extends Controller
     /**
      * ToDo編集画面を表示する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function showEdit($id)
@@ -112,7 +112,7 @@ class TodoController extends Controller
     /**
      * ToDoを編集する
      * 
-     * @return view  
+     * @return view
      *
      */
     public function exeUpdate(TodoRequest $request)
@@ -140,7 +140,7 @@ class TodoController extends Controller
     /**
      * ToDoを完了する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function exeDone($id)
@@ -162,7 +162,7 @@ class TodoController extends Controller
      /**
      * ToDoを削除する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function exeDelete($id)
