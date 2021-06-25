@@ -1,14 +1,31 @@
-@extends('layout')
+@extends('layouts.layout')
 @section('title', 'ToDo詳細')
+@push('css')
+    <link href="{{ asset('css/detail.css') }}" rel="stylesheet">
+@endpush
 @section('content')
-<div class="row">
-    <div class="col-md-8 col-md-offset-2">
-        <h3>{{ $todo->title }}</h3>
-        <span>登録日：{{ $todo->created_at }}　</span>
-        <span>更新日：{{ $todo->updated_at }}</span>
-        <br>
-        <br>
-        <p>{{ $todo->content }}</p>
-    </div>
+<div class="detail">
+    <h2 class="title">ToDo詳細</h2>
+    <form method="POST" action="{{ route('delete', $todo->id) }}" onSubmit="return checkDelete()">
+    @csrf
+        <button type="submit" class="delete-button">削除</button>
+    </form>
+
+    <h6 class="detail-title">やること</h6>
+    <h5>{{ $todo->title }}</h5>
+
+    <h6 class="detail-title">内容</h6>
+    <h5>{{ $todo->content }}</h5>
+
+    
 </div>
+<script>
+function checkDelete(){
+    if(window.confirm('ToDoを削除してよろしいですか？')){
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
 @endsection

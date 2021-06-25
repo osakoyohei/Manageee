@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TodoController;
-use App\Http\Controllers\Auth\AuthController;
-use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\Auth\LoginController;
+use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,10 +20,10 @@ use App\Http\Controllers\RegisterController;
 
 Route::group(['middleware' => ['guest']], function() {
     //ログインフォーム表示
-    Route::get('/', [AuthController::class, 'showLogin'])->name('login.show');
+    Route::get('/show/login', [LoginController::class, 'showLogin'])->name('login.show');
 
     //ログイン処理
-    Route::post('/login', [AuthController::class, 'login'])->name('login');
+    Route::post('/login', [LoginController::class, 'login'])->name('login');
 
     //新規登録画面
     Route::get('/show/register', [RegisterController::class, 'showRegister'])->name('register.show');
@@ -35,11 +37,14 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('todo_list', [TodoController::class, 'showList'])->name('todos');
     
     //ログアウト
-    Route::post('logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 });
 
+//トップページ
+Route::get('/', [TodoController::class, 'index'])->name('index');
+
 //ゲストユーザーログイン
-Route::get('/login/guest', [AuthController::class, 'guestLogin'])->name('login.guest');
+Route::get('/login/guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 
 //ToDo登録画面を表示
 Route::get('/todo/create', [TodoController::class, 'showCreate'])->name('create');
@@ -56,5 +61,21 @@ Route::get('/todo/edit/{id}', [TodoController::class, 'showEdit'])->name('edit')
 //ToDo編集
 Route::post('/todo/update', [TodoController::class, 'exeUpdate'])->name('update');
 
+//ToDo完了
+Route::post('/todo/Done/{id}', [TodoController::class, 'exeDone'])->name('done');
+
 //ToDo削除
 Route::post('/todo/delete/{id}', [TodoController::class, 'exeDelete'])->name('delete');
+
+
+//パスワード再設定メールアドレス入力フォーム表示
+Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+
+//パスワード再設定メール送信
+Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+
+//パスワードリセット入力フォーム表示
+Route::get('/password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+
+//パスワードリセット
+Route::post('/password/reset', [ResetPasswordController::class, 'resetPassword'])->name('password.update');

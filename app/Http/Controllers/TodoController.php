@@ -6,9 +6,19 @@ use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+
 
 class TodoController extends Controller
 {
+    /**
+     * @return View
+     */
+    public function index()
+    {
+        return view('todo.index');
+    }
+
     /**
      * ToDoリストを表示する
      * 
@@ -19,13 +29,17 @@ class TodoController extends Controller
     {
         $user_id = Auth::id();
         $todos = Todo::where('user_id', $user_id)->get();
-        return view('todo.list', ['todos' => $todos]);
+        $today = Carbon::today();
+        return view('todo.list', [
+            'todos' => $todos,
+            'today' => $today,
+        ]);
     }
 
     /**
      * ToDoの詳細を表示する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function showDetail($id)
@@ -43,18 +57,18 @@ class TodoController extends Controller
     /**
      * ToDo登録画面を表示する
      * 
-     * @return view  
+     * @return view
      *
      */
     public function showCreate()
     {
-        return view('todo.form');
+        return view('todo.todo_form');
     }
 
     /**
      * ToDoを登録する
      * 
-     * @return view  
+     * @return view
      *
      */
     public function exeStore(TodoRequest $request)
@@ -80,7 +94,7 @@ class TodoController extends Controller
     /**
      * ToDo編集画面を表示する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function showEdit($id)
@@ -98,7 +112,7 @@ class TodoController extends Controller
     /**
      * ToDoを編集する
      * 
-     * @return view  
+     * @return view
      *
      */
     public function exeUpdate(TodoRequest $request)
@@ -111,7 +125,7 @@ class TodoController extends Controller
             $todo = Todo::find($inputs['id']);
             $todo->fill([
                 'title' => $inputs['title'],
-                'content' => $inputs['content']
+                'content' => $inputs['content'],
             ]);
             $todo->save();
             \DB::commit();
@@ -120,13 +134,35 @@ class TodoController extends Controller
             abort(500);
         }
         
-        return redirect(route('todos'))->with('primary', 'ToDoを更新しました！');
+        return redirect(route('todos'))->with('success', 'ToDoを更新しました！');
+    }
+
+    /**
+     * ToDoを完了する
+     * @param int $id
+     * @return view
+     *
+     */
+    public function exeDone($id)
+    {
+        if (empty($id)) {
+            \Session::flash('err_msg', 'データがありません。');
+            return redirect(route('todos'));
+        }
+        
+        try {
+            Todo::destroy($id);
+        } catch(\Throwable $e) {
+            abort(500);
+        }
+        
+        return redirect(route('todos'))->with('danger', 'ToDoを完了しました！');
     }
 
      /**
      * ToDoを削除する
      * @param int $id
-     * @return view  
+     * @return view
      *
      */
     public function exeDelete($id)

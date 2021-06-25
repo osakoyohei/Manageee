@@ -3,26 +3,26 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\LoginFormRequest;
+use App\Http\Requests\LoginRequest;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 
-class AuthController extends Controller
+class LoginController extends Controller
 {
     /**
      * @return View
      */
     public function showLogin()
     {
-        return view('login.login_form');
+        return view('auth.login');
     }
 
     /**
-     * @param App\Http\Requests\LoginFormRequest;
+     * @param App\Http\Requests\LoginRequest;
      * request
      */
-    public function login(LoginFormRequest $request)
+    public function login(LoginRequest $request)
     {
         $credentials = $request->only('email', 'password');
 
@@ -32,7 +32,7 @@ class AuthController extends Controller
         if (!is_null($user)) {
             if ($user->locked_flg === 1) {
                 return back()->withErrors([
-                    'danger' => 'アカウントがロックされています。',
+                    'danger' => 'アカウントがロックされています！',
                 ]);
             }
 
@@ -44,7 +44,7 @@ class AuthController extends Controller
                     $user->save();
                 }
                 
-                return redirect()->route('todos')->with('success', 'ログインに成功しました！');
+                return redirect(route('todos'))->with('success', 'ログインに成功しました！');
             }    
 
             //ログイン失敗したらエラーカウントを1増やす
@@ -55,14 +55,14 @@ class AuthController extends Controller
                 $user->locked_flg = 1;
                 $user->save();
                 return back()->withErrors([
-                    'danger' => 'アカウントがロックされました。',
+                    'danger' => 'アカウントがロックされました！',
                 ]);
             }
             $user->save();
         }
 
         return back()->withErrors([
-            'danger' => 'メールアドレスまたはパスワードが正しくありません。',
+            'danger' => 'メールアドレスまたはパスワードが不正です。',
         ]);
     }
 
@@ -80,7 +80,7 @@ class AuthController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect()->route('login.show')->with('danger', 'ログアウトしました。');
+        return redirect(route('index'))->with('danger', 'ログアウトしました！');
     }
 
     /**
@@ -92,9 +92,9 @@ class AuthController extends Controller
         $password = 'password';
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect()->route('todos');
+            return redirect(route('todos'))->with('success', 'ゲストログインに成功しました！');
         }
 
-        return redirect()->route('login.show');
+        return redirect(route('login.show'));
     }
 }
