@@ -34,12 +34,8 @@
             @endif
         </div>
         <div class="mt-5">
-            <button type="submit" class="btn btn-primary">
-                更新する
-            </button>
-            <a class="btn btn-secondary" href="{{ route('todos') }}">
-                キャンセル
-            </a>
+            <a class="btn btn-secondary" href="{{ route('todos') }}">キャンセル</a>
+            <button type="submit" class="btn btn-primary">更新する</button>
         </div>
     </form>
 </div>
