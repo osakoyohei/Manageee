@@ -24,14 +24,14 @@
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="パスワード">
-        <label for="inputPassword">パスワード</label>
+        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="パスワード（8文字以上）">
+        <label for="inputPassword">パスワード（8文字以上）</label>
     </div>
     <span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
 
     <div class="form-label-group">
         <input type="password" id="inputPasswordConfirm" class="form-control" name="password_confirmation" placeholder="パスワード確認">
-        <label for="inputPasswordConfirm">パスワード確認</label>
+        <label for="inputPasswordConfirm">パスワード確認（8文字以上）</label>
     </div>
     <span id="buttonEyeConfirm" class="fa fa-eye" onclick="pushHideButtonConfirm()"></span>
     <br>

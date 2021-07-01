@@ -30,8 +30,8 @@
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード">
-        <label for="inputPassword">パスワード</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード(8文字以上)">
+        <label for="inputPassword">パスワード（8文字以上）</label>
     </div>
     <span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
 
