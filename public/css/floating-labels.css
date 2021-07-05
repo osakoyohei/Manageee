@@ -124,3 +124,16 @@
 .password-reset {
   text-align: center;
 }
+
+#buttonEye {
+  position: relative; 
+  bottom: 48px;
+  left: 360px;
+  margin-bottom: -20px;
+}
+
+#buttonEyeConfirm {
+  position: relative; 
+  bottom: 48px;
+  left: 360px;
+}

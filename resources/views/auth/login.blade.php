@@ -30,9 +30,10 @@
     </div>
 
     <div class="form-label-group">
-        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード">
-        <label for="inputPassword">パスワード</label>
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="パスワード(8文字以上)">
+        <label for="inputPassword">パスワード（8文字以上）</label>
     </div>
+    <span id="buttonEye" class="fa fa-eye" onclick="pushHideButton()"></span>
 
     <div class="g-recaptcha" data-sitekey="{{ config('no-captcha.sitekey', 'no-captcha-sitekey') }}"></div>
     <br>
@@ -44,3 +45,16 @@
     </div>
 </form>
 @endsection
+<script>
+function pushHideButton() {
+    var txtPass = document.getElementById("inputPassword");
+    var btnEye = document.getElementById("buttonEye");
+    if (txtPass.type === "text") {
+        txtPass.type = "password";
+        btnEye.className = "fa fa-eye";
+    } else {
+        txtPass.type = "text";
+        btnEye.className = "fa fa-eye-slash";
+    }
+}
+</script>
