@@ -11,6 +11,8 @@ use Illuminate\Support\Facades\Auth;
 class LoginController extends Controller
 {
     /**
+     * ログインフォームを表示する。
+     * 
      * @return View
      */
     public function showLogin()
@@ -19,8 +21,9 @@ class LoginController extends Controller
     }
 
     /**
-     * @param App\Http\Requests\LoginRequest;
-     * request
+     * ログイン処理。
+     * 
+     * @param LoginRequest $request
      */
     public function login(LoginRequest $request)
     {
@@ -67,20 +70,17 @@ class LoginController extends Controller
     }
 
     /**
-     * ユーザーをアプリケーションからログアウトさせる
+     * ログアウト処理。
      *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
+     * @param  Request $request
      */
     public function logout(Request $request)
     {
         Auth::logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
 
-        return redirect(route('index'))->with('danger', 'ログアウトしました！');
+        return redirect(route('home'))->with('danger', 'ログアウトしました！');
     }
 
     /**
@@ -92,7 +92,7 @@ class LoginController extends Controller
         $password = 'password';
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
-            return redirect(route('todos'))->with('success', 'ゲストログインに成功しました！');
+            return redirect(route('todo.index'))->with('success', 'ゲストログインに成功しました！');
         }
 
         return redirect(route('login.show'));

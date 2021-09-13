@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Hash;
 class RegisterController extends Controller
 {
     /**
+     * 新規登録画面を表示する。
+     * 
     * @return View
     */
     public function showRegister()
@@ -20,10 +22,10 @@ class RegisterController extends Controller
     }
 
     /**
-     * 新規登録する
+     * 新規登録処理。
      * 
-     * @return view  
-     *
+     * @param RegisterRequest $request
+     * @return view
      */
     public function register(RegisterRequest $request)
     {

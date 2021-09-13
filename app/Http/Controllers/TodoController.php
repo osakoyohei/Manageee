@@ -2,47 +2,36 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 
-
 class TodoController extends Controller
 {
     /**
-     * @return View
-     */
-    public function index()
-    {
-        return view('todo.index');
-    }
-
-    /**
-     * ToDoリストを表示する
+     * ToDoリストを表示する。
      * 
      * @return view  
-     *
      */
-    public function showList()
+    public function index()
     {
         $user_id = Auth::id();
         $todos = Todo::where('user_id', $user_id)->get();
         $today = Carbon::today();
-        return view('todo.list', [
+        return view('todo.index', [
             'todos' => $todos,
             'today' => $today,
         ]);
     }
 
     /**
-     * ToDoの詳細を表示する
-     * @param int $id
+     * ToDoの詳細を表示する。
+     * 
+     * @param int $id 詳細を表示するToDoのID。
      * @return view
-     *
      */
-    public function showDetail($id)
+    public function show($id)
     {
         $todo = Todo::find($id);
         
@@ -51,27 +40,26 @@ class TodoController extends Controller
             return redirect(route('todos'));
         }
 
-        return view('todo.detail', ['todo' => $todo]);
+        return view('todo.show', ['todo' => $todo]);
     }
 
     /**
-     * ToDo登録画面を表示する
+     * ToDo登録画面を表示する。
      * 
      * @return view
-     *
      */
-    public function showCreate()
+    public function create()
     {
-        return view('todo.todo_form');
+        return view('todo.create');
     }
 
     /**
-     * ToDoを登録する
+     * ToDoを登録する。
      * 
+     * @param TodoRequest $request
      * @return view
-     *
      */
-    public function exeStore(TodoRequest $request)
+    public function store(TodoRequest $request)
     {
         $user_id = Auth::id();
         
@@ -88,16 +76,16 @@ class TodoController extends Controller
             abort(500);
         }
 
-        return redirect(route('todos'))->with('success', 'ToDoを登録しました！');
+        return redirect(route('todo.index'))->with('success', 'ToDoを登録しました！');
     }
 
     /**
-     * ToDo編集画面を表示する
-     * @param int $id
+     * ToDoの編集画面を表示する。
+     * 
+     * @param int $id 編集するToDoのID。
      * @return view
-     *
      */
-    public function showEdit($id)
+    public function edit($id)
     {
         $todo = Todo::find($id);
         
@@ -110,14 +98,13 @@ class TodoController extends Controller
     }
 
     /**
-     * ToDoを編集する
+     * ToDoを編集する。
      * 
+     * @param TodoRequest $request
      * @return view
-     *
      */
-    public function exeUpdate(TodoRequest $request)
+    public function update(TodoRequest $request)
     {
-        //ToDoのデータを受け取る
         $inputs = $request->all();
         
         \DB::beginTransaction();
@@ -134,20 +121,20 @@ class TodoController extends Controller
             abort(500);
         }
         
-        return redirect(route('todos'))->with('success', 'ToDoを更新しました！');
+        return redirect(route('todo.index'))->with('success', 'ToDoを更新しました！');
     }
 
     /**
-     * ToDoを完了する
-     * @param int $id
+     * ToDoを完了する。
+     * 
+     * @param int $id ToDoを完了するID。
      * @return view
-     *
      */
-    public function exeDone($id)
+    public function done($id)
     {
         if (empty($id)) {
             \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('todos'));
+            return redirect(route('todo.index'));
         }
         
         try {
@@ -156,20 +143,20 @@ class TodoController extends Controller
             abort(500);
         }
         
-        return redirect(route('todos'))->with('danger', 'ToDoを完了しました！');
+        return redirect(route('todo.index'))->with('danger', 'ToDoを完了しました！');
     }
 
      /**
-     * ToDoを削除する
-     * @param int $id
+     * ToDoを削除する。
+     * 
+     * @param int $id ToDoを完了するID。
      * @return view
-     *
      */
-    public function exeDelete($id)
+    public function delete($id)
     {
         if (empty($id)) {
             \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('todos'));
+            return redirect(route('todo.index'));
         }
         
         try {
@@ -178,6 +165,6 @@ class TodoController extends Controller
             abort(500);
         }
         
-        return redirect(route('todos'))->with('danger', 'ToDoを削除しました！');
+        return redirect(route('todo.index'))->with('danger', 'ToDoを削除しました！');
     }
 }
