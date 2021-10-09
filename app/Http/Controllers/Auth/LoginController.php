@@ -47,7 +47,7 @@ class LoginController extends Controller
                     $user->save();
                 }
                 
-                return redirect(route('todos'))->with('success', 'ログインに成功しました！');
+                return redirect(route('todo.index'))->with('success', 'ログインに成功しました！');
             }    
 
             //ログイン失敗したらエラーカウントを1増やす
@@ -84,7 +84,7 @@ class LoginController extends Controller
     }
 
     /**
-     * ゲストログイン
+     * ゲストログイン処理。
      */
     public function guestLogin()
     {
