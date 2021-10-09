@@ -105,7 +105,6 @@ class TodoController extends Controller
      */
     public function update(TodoRequest $request)
     {
-        dd($request);
         $inputs = $request->all();
         
         \DB::beginTransaction();
