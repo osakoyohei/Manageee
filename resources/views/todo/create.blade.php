@@ -1,12 +1,13 @@
 @extends('layouts.layout')
 @section('title', 'ToDo登録')
 @push('css')
-    <link href="{{ asset('css/todo_form.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet">
 @endpush
 @section('content')
+
 <div class="todo_form">
     <h2>ToDo登録</h2>
-    <form method="POST" action="{{ route('store') }}" onSubmit="return checkSubmit()">
+    <form method="POST" action="{{ route('todo.store') }}" onSubmit="return checkSubmit()">
     @csrf
         <div class="form-group">
             <label for="title">
@@ -33,7 +34,7 @@
         </div>
 
         <div class="mt-5">
-            <a class="btn btn-secondary" href="{{ route('todos') }}">キャンセル</a>
+            <a class="btn btn-secondary" href="{{ route('todo.index') }}">キャンセル</a>
             <button type="submit" class="btn btn-primary">登録する</button>
         </div>
     </form>

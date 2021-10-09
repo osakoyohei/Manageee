@@ -3,10 +3,11 @@
 @push('css')
     <link href="{{ asset('css/detail.css') }}" rel="stylesheet">
 @endpush
+
 @section('content')
 <div class="detail">
     <h2 class="title">ToDo詳細</h2>
-    <form method="POST" action="{{ route('delete', $todo->id) }}" onSubmit="return checkDelete()">
+    <form method="POST" action="{{ route('todo.delete', $todo->id) }}" onSubmit="return checkDelete()">
     @csrf
         <button type="submit" class="delete-button">削除</button>
     </form>
@@ -16,8 +17,7 @@
 
     <h6 class="detail-title">内容</h6>
     <h5>{{ $todo->content }}</h5>
-
-    
+  
 </div>
 <script>
 function checkDelete(){

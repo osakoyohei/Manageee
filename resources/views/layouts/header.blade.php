@@ -1,12 +1,12 @@
 <nav class="navbar navbar-expand navbar-dark bg-dark">
-    <a class="navbar-brand" href="{{ route('index') }}">ToDoList</a>
+    <a class="navbar-brand" href="{{ route('home') }}">ToDoList</a>
         @if(Auth::check())
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item active">
-                    <a href="{{ route('todos') }}" class="btn btn-link" style="color:white;">ToDoリスト <span class="sr-only">(current)</span></a>
+                    <a href="{{ route('todo.index') }}" class="btn btn-link" style="color:white;">ToDoリスト <span class="sr-only">(current)</span></a>
                 </li>
                 <li class="nav-item active">
-                    <a href="{{ route('create') }}" class="btn btn-link" style="color:white;">ToDo登録 <span class="sr-only">(current)</span></a>
+                    <a href="{{ route('todo.create') }}" class="btn btn-link" style="color:white;">ToDo登録 <span class="sr-only">(current)</span></a>
                 </li>
             </ul>
             <form method="POST" action="{{ route('logout') }}">
