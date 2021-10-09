@@ -1,48 +1,59 @@
 @extends('layouts.layout')
-@section('title', 'ToDoList')
+@section('title', 'ToDoリスト')
 @push('css')
     <link href="{{ asset('css/index.css') }}" rel="stylesheet">
 @endpush
+
 @section('content')
-<div class="index">
+<div class="list">
 
-    <x-alert type="danger" :session="session('danger')"/>
-
-    <div class="title">
-        <h1>ToDoListで作業効率向上を目指す！</h1>
-        <h4>やらないといけない作業があるのにどんどん後回しにしてしまい、</h4>
-        <h4>結局作業をするのを忘れてしまった経験はありませんか？</h4>
-        <h4>そこで活用できるのが、<span class="title-under">「ToDoリスト」</span>です！</h4>
-    </div>
-
-    @if(Auth::check())
-        <div class="login-user">
-            <a href="{{ route('todos') }}" class="button-login">はじめる</a>
-        </div>
-    @else
-        <div class="logout-user">
-            <a href="{{ route('login.guest') }}" class="button-guest">お試しはこちら</a>
+    @if (session('status'))
+        <div class="alert alert-primary" role="alert">
+            {{ session('status') }}
         </div>
     @endif
-
-    <div id="todolist-img">
-        <img src="image/todolist.jpeg" alt="ToDoリストサンプル画像" class="todolist-img">
-    </div>
     
-    <div class="todolist-explanation">
-        <h2><span class="explanation-under">ToDoリストとは？</span></h2>
-        ToDoリストとはやることリストとも言われ、頭の中にあるやるべきことを整理するのに使われます。<br>
-        やるべきことをはっきりさせることで、今自分が何をすべきなのかということが明確になり、<br>
-        ToDoの抜け漏れを防ぎ、実行までしっかり管理することができるようになります。<br>
-    </div>
+    <x-alert type="success" :session="session('success')"/>
+    <x-alert type="primary" :session="session('primary')"/>
+    <x-alert type="danger" :session="session('danger')"/>
 
-    <div class="todo-explanation">
-        <h2><span class="explanation-under">ToDoとは？</span></h2>
-        「ToDo」とは、「いつかするべきこと、しなければならないこと」を意味する言葉です。<br>
-        ある作業をしないといけないが、明確な期限が決まっていないものがToDoと言えます。<br>
-        ToDoには「ある程度、この日時までには終える必要がある」というニュアンスは含みますが、<br>
-        はっきりとは期限が決まっているわけではありません。<br>
-    </div>
+    <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
 
+    @if(empty($todos[0]['user_id']))
+        <h5>ToDoが登録されていません。</h5>
+    @else
+        <table class="table table-striped">
+            <tr>
+                <th>やること</th>
+                <th>登録日</th>
+                <th>経過日数</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+            @foreach($todos as $todo)
+            <tr>
+                <td>{{ $todo->title }}</td>
+                <td>{{ $todo->created_at->format('Y/m/d') }}</td>
+                <td>{{ $today->diffInDays($todo->created_at->format('Y/m/d')) }}日</td>
+                <td><button type="button" class="list-button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
+                <td><button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
+                <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDelete()">
+                @csrf
+                    <td><button type="submit" class="delete-button"><i class="fas fa-check"></i></button></td>
+                </form>
+            </tr>
+            @endforeach
+        </table>
+    @endif
 </div>
+<script>
+function checkDelete(){
+    if(window.confirm('ToDoを完了してよろしいですか？')){
+        return true;
+    } else {
+        return false;
+    }
+}
+</script>
 @endsection

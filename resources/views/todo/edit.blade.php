@@ -4,9 +4,10 @@
     <link href="{{ asset('css/edit.css') }}" rel="stylesheet">
 @endpush
 @section('content')
+
 <div class="edit">
     <h2>ToDo編集</h2>
-    <form method="POST" action="{{ route('update') }}" onSubmit="return checkSubmit()">
+    <form method="POST" action="{{ route('todo.update') }}" onSubmit="return checkSubmit()">
     @csrf
         <input type="hidden" name="id" value="{{ $todo->id }}">
         
@@ -34,7 +35,7 @@
             @endif
         </div>
         <div class="mt-5">
-            <a class="btn btn-secondary" href="{{ route('todos') }}">キャンセル</a>
+            <a class="btn btn-secondary" href="{{ route('todo.index') }}">キャンセル</a>
             <button type="submit" class="btn btn-primary">更新する</button>
         </div>
     </form>
