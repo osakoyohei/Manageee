@@ -91,7 +91,7 @@ class TodoController extends Controller
         
         if (is_null($todo)) {
             \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('todos'));
+            return redirect(route('todo.index'));
         }
         
         return view('todo.edit', ['todo' => $todo]);
@@ -105,6 +105,7 @@ class TodoController extends Controller
      */
     public function update(TodoRequest $request)
     {
+        dd($request);
         $inputs = $request->all();
         
         \DB::beginTransaction();

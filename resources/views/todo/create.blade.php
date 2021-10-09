@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title', 'ToDo登録')
 @push('css')
-    <link href="{{ asset('css/todo_form.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/create.css') }}" rel="stylesheet">
 @endpush
 @section('content')
 

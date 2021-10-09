@@ -1,4 +1,4 @@
-.index {
+.list {
     width: 100%;
     max-width: 900px;
     min-width :600px;
@@ -6,90 +6,44 @@
     margin: auto;
 }
 
-.title {
-    text-align: center;
-    margin-bottom: 25px;
-}
-
-.title h1 {
-    border-bottom: solid 3px #EE0000;
-    margin-bottom: 15px;
-}
-
-.title-under {
-    border-bottom: double 6px #87CEFA;
-}
-
-.login-user {
-    text-align: center;
-}
-
-.logout-user {
-    text-align: center;
-}
-
-.button-login {
-    display: inline-block;
-    padding: 0.8em 2em;
-    margin: 0 1em;
-    text-decoration: none;
+i {
     color: white;
-    background: #0099FF;
-    border: solid 2px #0099FF;
-    border-radius: 3px;
-    transition: .4s;
-}
-.button-login:hover {
-    background: #0066CC;
-    border: solid 2px #0066CC;
-    color: white;
-    text-decoration: none;
 }
 
-.button-guest {
-    display: inline-block;
-    padding: 0.8em 2em;
-    margin: 0 1em;
-    text-decoration: none;
-    color: white;
-    background: #00EE00;
-    border: solid 2px #00EE00;
-    border-radius: 3px;
-    transition: .4s;
-}
-.button-guest:hover {
-    background: #00CC00;
-    border: solid 2px #00CC00;
-    color: white;
-    text-decoration: none;
+.list-button {
+    background-color: blue;
+    border: blue;
+    border-radius: 15px;
+    padding: 0.3em 0.6em;
+    margin-top: -5px;
+    margin-bottom: -5px;
 }
 
-#todolist-img {
-    text-align: center;
-    margin-top: 20px;
-    margin-bottom: 25px;
+.edit-button {
+    background-color: green;
+    border: green;
+    border-radius: 15px;
+    padding: 0.3em 0.6em;
+    margin-top: -5px;
+    margin-bottom: -5px;
 }
 
-.todolist-img {
-    width: 650px;
-    height: 350px;
-    border-radius: 5px;
+.delete-button {
+    background-color: red;
+    border: red;
+    border-radius: 15px;
+    padding: 0.3em 0.6em;
+    margin-top: -5px;
+    margin-bottom: -5px;
 }
 
-.todolist-explanation {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 20px;
+table th {
+    background: #e9ecef;
 }
 
-.todo-explanation {
-    background-color: white;
-    padding: 15px;
-    border-radius: 10px;
-    margin-bottom: 30px;
+table td {
+	background: white;
 }
-
-.explanation-under {
-    background: linear-gradient(transparent 70%, #99FFFF 90%);
+table tr:nth-child(odd) td {
+	background: #e9ecef;
 }

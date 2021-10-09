@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title', 'ToDoList')
 @push('css')
-    <link href="{{ asset('css/index.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/home.css') }}" rel="stylesheet">
 @endpush
 
 @section('content')
@@ -21,15 +21,11 @@
             <a href="{{ route('todo.index') }}" class="button-login">はじめる</a>
         </div>
     @else
-        <div class="logout-user">
+        <div class="guest-user">
             <a href="{{ route('login.guest') }}" class="button-guest">お試しはこちら</a>
         </div>
     @endif
-
-    <div id="todolist-img">
-        <img src="image/todolist.jpeg" alt="ToDoリストサンプル画像" class="todolist-img">
-    </div>
-    
+     
     <div class="todolist-explanation">
         <h2><span class="explanation-under">ToDoリストとは？</span></h2>
         ToDoリストとはやることリストとも言われ、頭の中にあるやるべきことを整理するのに使われます。<br>

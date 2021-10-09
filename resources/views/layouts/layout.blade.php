@@ -7,7 +7,11 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
+    <!--title -->
     <title>@yield('title')</title>
+
+    <!-- icon -->
+    <link rel="icon" href="image/todolist.jpeg">
 
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css">
