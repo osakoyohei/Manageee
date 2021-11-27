@@ -2,7 +2,12 @@
 @section('title', 'ログインフォーム')
 @push('css')
     <!-- form.css -->
-    <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
+    @if(app('env')=='local')
+        <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+    @endif
+    @if(app('env')=='production')
+        <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
+    @endif
 
     <!-- reCAPTCHA v2 -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script> 

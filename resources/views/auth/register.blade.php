@@ -1,8 +1,14 @@
 @extends('layouts.layout')
 @section('title', '新規登録フォーム')
 @push('css')
-    <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
+    @if(app('env')=='local')
+        <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+    @endif
+    @if(app('env')=='production')
+        <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
+    @endif
 @endpush
+
 @section('content')
 <form method="POST" action="{{ route('register') }}" class="form-signin">
 @csrf

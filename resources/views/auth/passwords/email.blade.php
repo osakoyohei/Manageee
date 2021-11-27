@@ -1,8 +1,14 @@
 @extends('layouts.layout')
 @section('title', 'パスワード再設定メールアドレス送信フォーム')
 @push('css')
-    <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+    @if(app('env')=='local')
+        <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+    @endif
+    @if(app('env')=='production')
+        <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
+    @endif
 @endpush
+
 @section('content')
 <form method="POST" action="{{ route('password.email') }}" class="form-signin">
 @csrf
