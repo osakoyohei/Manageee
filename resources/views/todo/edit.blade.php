@@ -1,7 +1,12 @@
 @extends('layouts.layout')
 @section('title', 'ToDo編集')
 @push('css')
-    <link href="{{ secure_asset('/css/edit.css') }}" rel="stylesheet">
+    @if(app('env')=='local')
+        <link href="{{ asset('/css/edit.css') }}" rel="stylesheet">
+    @endif
+    @if(app('env')=='production')
+        <link href="{{ secure_asset('/css/edit.css') }}" rel="stylesheet">
+    @endif
 @endpush
 @section('content')
 

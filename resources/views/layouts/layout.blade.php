@@ -11,7 +11,12 @@
     <title>@yield('title')</title>
 
     <!-- icon -->
-    <link rel="shortcut icon" type="image/x-icon"  href="{{ secure_asset('/images/favicon.ico') }}">
+    @if(app('env')=='local')
+        <link rel="shortcut icon" type="image/x-icon"  href="{{ asset('/images/favicon.ico') }}">
+    @endif
+    @if(app('env')=='production')
+        <link rel="shortcut icon" type="image/x-icon"  href="{{ secure_asset('/images/favicon.ico') }}">
+    @endif
     
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css">
