@@ -2,7 +2,7 @@
 @section('title', 'ログインフォーム')
 @push('css')
     <!-- form.css -->
-    <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
 
     <!-- reCAPTCHA v2 -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script> 
