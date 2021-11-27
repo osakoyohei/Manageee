@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 @section('title', 'ToDo編集')
 @push('css')
-    <link href="{{ asset('css/edit.css') }}" rel="stylesheet">
+    <link href="{{ secure_asset('/css/edit.css') }}" rel="stylesheet">
 @endpush
 @section('content')
 

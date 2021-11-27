@@ -11,7 +11,7 @@
     <title>@yield('title')</title>
 
     <!-- icon -->
-    <link rel="shortcut icon" type="image/x-icon"  href="{{ asset('images/favicon.ico') }}">
+    <link rel="shortcut icon" type="image/x-icon"  href="{{ secure_asset('/images/favicon.ico') }}">
     
     <!-- Styles -->
     <link rel="stylesheet" href="/css/app.css">
