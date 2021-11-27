@@ -5,7 +5,7 @@
         <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
     @endif
     @if(app('env')=='production')
-        <link href="{{ asset('css/floating-labels.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('css/floating-labels.css') }}" rel="stylesheet">
     @endif
 @endpush
 @section('content')
