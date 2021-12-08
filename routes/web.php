@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -47,6 +48,10 @@ Route::group(['middleware' => ['guest']], function() {
 });
 
 Route::group(['middleware' => ['auth']], function() {
+    // ユーザープロフィール画面を表示
+    Route::get('user/profile', [UserController::class, 'profile'])->name('user.profile');
+    // ユーザーアカウント画面を表示
+    Route::get('user/account', [UserController::class, 'account'])->name('user.account');
     // ログアウト処理
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
