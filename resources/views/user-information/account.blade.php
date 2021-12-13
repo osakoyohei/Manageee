@@ -31,15 +31,6 @@
     </div>
 </form>
 
-<div class="button open">open</div>
-<div class="modal">
-    <div class="modal_bg"></div>
-    <div class="modal_window">
-        <h3>モーダルウィンドウ</h3>
-        <div class="button close">close</div>
-    </div>
-</div>
-
 <script>
     function checkSubmit(){
         if(window.confirm('保存してよろしいですか？')){
