@@ -95,7 +95,7 @@
 </form>
 
 <script>
-    // 
+    // メールアドレス変更確認
     function emailCheckSubmit(){
         if(window.confirm('メールアドレスを変更してよろしいですか？')){
             return true;
@@ -103,7 +103,7 @@
             return false;
         }
     }
-
+    // パスワード変更確認
     function passwordCheckSubmit(){
         if(window.confirm('パスワードを変更してよろしいですか？')){
             return true;
