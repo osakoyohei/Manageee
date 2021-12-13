@@ -7,6 +7,8 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\TodoController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\AccountController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,7 +23,6 @@ use App\Http\Controllers\TodoController;
 
 //トップページ
 Route::get('/', [HomeController::class, 'index'])->name('home');
-
 
 Route::group(['middleware' => ['guest']], function() {
     // ログインフォームを表示する
@@ -47,11 +48,24 @@ Route::group(['middleware' => ['guest']], function() {
 });
 
 Route::group(['middleware' => ['auth']], function() {
+
+    // ユーザープロフィール画面を表示
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+    // ユーザープロフィール情報の編集
+    Route::post('/profile/update', [ProfileController::class, 'update'])->name('profile.update');
+
+    // ユーザーアカウント画面を表示
+    Route::get('/account', [AccountController::class, 'index'])->name('account.index');
+    // メールアドレスの変更
+    Route::post('/email/update', [AccountController::class, 'emailUpdate'])->name('email.update');
+    // パスワードの変更
+    Route::post('/password/update', [AccountController::class, 'passwordUpdate'])->name('password.update');
+    
     // ログアウト処理
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
     // ToDoリスト画面を表示する
-    Route::get('todo/index', [TodoController::class, 'index'])->name('todo.index');
+    Route::get('/todo/index', [TodoController::class, 'index'])->name('todo.index');
     // ToDo登録画面を表示する
     Route::get('/todo/create', [TodoController::class, 'create'])->name('todo.create');
     // ToDo登録

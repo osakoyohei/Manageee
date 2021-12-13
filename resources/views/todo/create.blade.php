@@ -2,10 +2,10 @@
 @section('title', 'ToDo登録')
 @push('css')
     @if(app('env')=='local')
-        <link href="{{ asset('/css/create.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/todo/create.css') }}" rel="stylesheet">
     @endif
     @if(app('env')=='production')
-        <link href="{{ secure_asset('/css/create.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('/css/todo/create.css') }}" rel="stylesheet">
     @endif
 @endpush
 @section('content')
