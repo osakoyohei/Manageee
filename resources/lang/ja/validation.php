@@ -154,6 +154,8 @@ return [
         'name' => '名前',
         'email' => 'メールアドレス',
         'password' => 'パスワード',
+        'currentPassword' => '現在のパスワード',
+        'newPassword' => '新しいパスワード',
         'password_confirmation' => 'パスワード確認',
     ],
 
