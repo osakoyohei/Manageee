@@ -2,10 +2,10 @@
 @section('title', 'ToDo詳細')
 @push('css')
     @if(app('env')=='local')
-        <link href="{{ asset('/css/todo/detail.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/todo-detail.css') }}" rel="stylesheet">
     @endif
     @if(app('env')=='production')
-        <link href="{{ secure_asset('/css/todo/detail.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('/css/todo-detail.css') }}" rel="stylesheet">
     @endif
 @endpush
 
