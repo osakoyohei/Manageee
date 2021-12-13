@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class AccountRequest extends FormRequest
+class AccountEmailRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,6 +25,7 @@ class AccountRequest extends FormRequest
     {
         return [
             'email' => 'required|email|max:255|regex:/^[!-~]+$/|unique:users',
+            'password' => 'required|min:8|regex:/^[!-~]+$/',
         ];
     }
 }

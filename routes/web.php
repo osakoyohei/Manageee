@@ -56,8 +56,10 @@ Route::group(['middleware' => ['auth']], function() {
 
     // ユーザーアカウント画面を表示
     Route::get('/account', [AccountController::class, 'index'])->name('account.index');
-    // ユーザープロフィール情報の編集
-    Route::post('/account/update', [AccountController::class, 'update'])->name('account.update');
+    // メールアドレスの変更
+    Route::post('/email/update', [AccountController::class, 'emailUpdate'])->name('email.update');
+    // パスワードの変更
+    Route::post('/password/update', [AccountController::class, 'passwordUpdate'])->name('password.update');
     
     // ログアウト処理
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
