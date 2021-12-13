@@ -24,7 +24,6 @@ use App\Http\Controllers\AccountController;
 //トップページ
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-
 Route::group(['middleware' => ['guest']], function() {
     // ログインフォームを表示する
     Route::get('/login', [LoginController::class, 'showLogin'])->name('login.show');

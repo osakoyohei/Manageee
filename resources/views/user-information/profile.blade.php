@@ -1,5 +1,14 @@
 @extends('layouts.layout')
 @section('title', 'プロフィールページ')
+@push('css')
+    @if(app('env')=='local')
+        <link href="{{ asset('/css/user-information/profile.css') }}" rel="stylesheet">
+    @endif
+    @if(app('env')=='production')
+        <link href="{{ secure_asset('/css/user-information/profile.css') }}" rel="stylesheet">
+    @endif
+@endpush
+
 @section('content')
 
 <x-alert type="success" :session="session('success')"/>

@@ -2,10 +2,10 @@
 @section('title', 'アカウントページ')
 @push('css')
     @if(app('env')=='local')
-        <link href="{{ asset('/css/edit.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/user-information/account.css') }}" rel="stylesheet">
     @endif
     @if(app('env')=='production')
-        <link href="{{ secure_asset('/css/edit.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('/css/user-information/account.css') }}" rel="stylesheet">
     @endif
 @endpush
 @section('content')
@@ -30,6 +30,15 @@
         <button type="submit" class="btn btn-secondary">保存</button>
     </div>
 </form>
+
+<div class="button open">open</div>
+<div class="modal">
+    <div class="modal_bg"></div>
+    <div class="modal_window">
+        <h3>モーダルウィンドウ</h3>
+        <div class="button close">close</div>
+    </div>
+</div>
 
 <script>
     function checkSubmit(){
