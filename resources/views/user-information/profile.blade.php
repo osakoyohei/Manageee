@@ -20,7 +20,7 @@
     @csrf
     <div class="form-group">
         <label for="name">
-            名前
+            名前：
         </label>
         <input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}">
         @if ($errors->has('name'))
@@ -29,7 +29,7 @@
             </div>
         @endif
     </div>
-    <div class="mt-5">
+    <div class="mt-3">
         <button type="submit" class="btn btn-secondary">保存</button>
     </div>
 </form>
