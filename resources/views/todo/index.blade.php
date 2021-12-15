@@ -50,6 +50,7 @@
             </tr>
             @endforeach
         </table>
+        {{ $todos->links() }}
     @endif
 </div>
 <script>

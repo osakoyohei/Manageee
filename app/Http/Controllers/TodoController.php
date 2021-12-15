@@ -32,7 +32,7 @@ class TodoController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $todos = Todo::where('user_id', $user_id)->get();
+        $todos = Todo::where('user_id', $user_id)->paginate(5);
         $today = Carbon::today();
         return view('todo.index', [
             'todos' => $todos,
