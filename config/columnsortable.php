@@ -44,17 +44,17 @@ return [
     icon and text separator (any string)
     in case of 'clickable_icon' => true; separator creates possibility to style icon and anchor-text properly
      */
-    'icon_text_separator'           => ' ',
+    'icon_text_separator'           => '',
 
     /*
     suffix class that is appended when ascending direction is applied
      */
-    'asc_suffix'                    => 'fa fa-sort',
+    'asc_suffix'                    => 'fa fa-sort-up',
 
     /*
     suffix class that is appended when descending direction is applied
      */
-    'desc_suffix'                   => 'fa fa-sort',
+    'desc_suffix'                   => 'fa fa-sort-down',
 
     /*
     default anchor class, if value is null none is added
