@@ -30,7 +30,7 @@
         <table class="table table-striped">
             <tr>
                 <th>やること</th>
-                <th>登録日@sortablelink('created_at', '')</th>
+                <th>登録日 @sortablelink('created_at', '')</th>
                 <th>経過日数</th>
                 <th></th>
                 <th></th>
