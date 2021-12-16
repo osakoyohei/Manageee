@@ -23,7 +23,7 @@ return [
     /*
     whether icons should be enabled
      */
-    'enable_icons'                  => false,
+    'enable_icons'                  => true,
 
     /*
     defines icon set to use when sorted data is none above (alpha nor amount nor numeric)
@@ -38,7 +38,7 @@ return [
     /*
     generated icon is clickable non-clickable (default)
      */
-    'clickable_icon'                => false,
+    'clickable_icon'                => true,
 
     /*
     icon and text separator (any string)
@@ -49,12 +49,12 @@ return [
     /*
     suffix class that is appended when ascending direction is applied
      */
-    'asc_suffix'                    => '-asc',
+    'asc_suffix'                    => 'fa fa-sort',
 
     /*
     suffix class that is appended when descending direction is applied
      */
-    'desc_suffix'                   => '-desc',
+    'desc_suffix'                   => 'fa fa-sort',
 
     /*
     default anchor class, if value is null none is added
