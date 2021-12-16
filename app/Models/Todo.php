@@ -4,10 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Kyslik\ColumnSortable\Sortable;
 
 class Todo extends Model
 {
     use HasFactory;
+    use Sortable;
+
     //テーブル名
     protected $table = 'todos';
 
@@ -16,5 +19,10 @@ class Todo extends Model
         'title',
         'content',
         'user_id',
+    ];
+
+    // ソート
+    public $sortable = [
+        'created_at',
     ];
 }
