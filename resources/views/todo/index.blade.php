@@ -24,6 +24,17 @@
 
     <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
 
+    <!-- キーワード検索 -->
+    <div class="post-search-form col-md-6">
+        <form class="form-inline" action="{{ route('title.search') }}" method="GET">
+            <div class="form-group">
+                <input type="text" name="keyword"  class="form-control" placeholder="キーワードを入力" value="@if (isset($keyword)) {{ $keyword }} @endif">
+            </div>
+            <input type="submit" value="検索" class="btn btn-secondary">
+        </form>
+    </div>
+    <br>
+
     @if(empty($todos[0]['user_id']))
         <h5>ToDoが登録されていません。</h5>
     @else

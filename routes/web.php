@@ -80,4 +80,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/todo/delete/{id}', [TodoController::class, 'delete'])->name('todo.delete');
     //ToDo完了
     Route::post('/todo/done/{id}', [TodoController::class, 'done'])->name('todo.done');
+
+    // キーワード検索
+    Route::get('todo/title/search', [TodoController::class, 'titleSearch'])->name('title.search');
 });
