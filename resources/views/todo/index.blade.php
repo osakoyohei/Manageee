@@ -43,9 +43,9 @@
                 <th>やること</th>
                 <th>登録日 @sortablelink('created_at', '')</th>
                 <th>経過日数</th>
-                <th></th>
-                <th></th>
-                <th></th>
+                <th>詳細</th>
+                <th>編集</th>
+                <th>完了</th>
             </tr>
             @foreach($todos as $todo)
             <tr>

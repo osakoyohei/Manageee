@@ -47,3 +47,7 @@ table td {
 table tr:nth-child(odd) td {
 	background: #e9ecef;
 }
+
+.sort_black {
+    color: black;
+}
