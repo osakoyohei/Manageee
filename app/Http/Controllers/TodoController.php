@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
@@ -52,7 +53,7 @@ class TodoController extends Controller
         
         if (is_null($todo)) {
             \Session::flash('err_msg', 'データがありません。');
-            return redirect(route('todos'));
+            return redirect(route('todo.index'));
         }
 
         return view('todo.show', ['todo' => $todo]);
@@ -181,5 +182,30 @@ class TodoController extends Controller
         }
         
         return redirect(route('todo.index'))->with('danger', 'ToDoを削除しました！');
+    }
+    
+    /**
+     * やることをキーワード検索する。
+     * 
+     * @return view
+     */
+    public function titleSearch(Request $request)
+    {
+        $keyword = $request->keyword;
+
+        if (!empty($keyword)) {
+            $query = Todo::query()->where('title', 'like', '%'. $keyword. '%');
+
+            $user_id = Auth::id();
+            $todos = $query->sortable()->where('user_id', $user_id)->paginate(5);
+            $today = Carbon::today();
+            return view('todo.index', [
+                'todos' => $todos,
+                'today' => $today,
+                'keyword' => $keyword,
+            ]);
+        } else {
+            return back();
+        }
     }
 }
