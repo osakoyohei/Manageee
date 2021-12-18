@@ -28,12 +28,12 @@ return [
     /*
     defines icon set to use when sorted data is none above (alpha nor amount nor numeric)
      */
-    'default_icon_set'              => 'fa fa-sort',
+    'default_icon_set'              => 'fa fa-sort sort_black',
 
     /*
     icon that shows when generating sortable link while column is not sorted
      */
-    'sortable_icon'                 => 'fa fa-sort',
+    'sortable_icon'                 => 'fa fa-sort sort_black',
 
     /*
     generated icon is clickable non-clickable (default)
@@ -49,12 +49,12 @@ return [
     /*
     suffix class that is appended when ascending direction is applied
      */
-    'asc_suffix'                    => 'fa fa-sort-up',
+    'asc_suffix'                    => 'fa fa-sort-down sort_black',
 
     /*
     suffix class that is appended when descending direction is applied
      */
-    'desc_suffix'                   => 'fa fa-sort-down',
+    'desc_suffix'                   => 'fa fa-sort-up sort_black',
 
     /*
     default anchor class, if value is null none is added
