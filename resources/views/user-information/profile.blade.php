@@ -29,7 +29,7 @@
             </div>
         @endif
     </div>
-    <div class="mt-5">
+    <div class="mt-3">
         <button type="submit" class="btn btn-secondary">保存</button>
     </div>
 </form>
