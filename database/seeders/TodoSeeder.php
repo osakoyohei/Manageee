@@ -16,6 +16,7 @@ class TodoSeeder extends Seeder
     {
         DB::table('todos')->insert([
             [
+                'id' => '1',
                 'user_id' => 1,
                 'title' => 'test1',
                 'content' => 'テスト1です。',
@@ -23,6 +24,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/01 11:11:11',
             ],
             [
+                'id' => '2',
                 'user_id' => 1,
                 'title' => 'test2',
                 'content' => 'テスト2です。',
@@ -30,6 +32,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/02 11:11:11',
             ],
             [
+                'id' => '3',
                 'user_id' => 1,
                 'title' => 'test3',
                 'content' => 'テスト3です。',
@@ -37,6 +40,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/03 11:11:11',
             ],
             [
+                'id' => '4',
                 'user_id' => 1,
                 'title' => 'test4',
                 'content' => 'テスト4です。',
@@ -44,6 +48,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/04 11:11:11',
             ],
             [
+                'id' => '5',
                 'user_id' => 1,
                 'title' => 'test5',
                 'content' => 'テスト5です。',
@@ -51,6 +56,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/05 11:11:11',
             ],
             [
+                'id' => '6',
                 'user_id' => 1,
                 'title' => 'test6',
                 'content' => 'テスト6です。',
@@ -58,6 +64,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/06 11:11:11',
             ],
             [
+                'id' => '7',
                 'user_id' => 1,
                 'title' => 'test7',
                 'content' => 'テスト7です。',
@@ -65,6 +72,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/07 11:11:11',
             ],
             [
+                'id' => '8',
                 'user_id' => 1,
                 'title' => 'test8',
                 'content' => 'テスト8です。',
@@ -72,6 +80,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/08 11:11:11',
             ],
             [
+                'id' => '9',
                 'user_id' => 1,
                 'title' => 'test9',
                 'content' => 'テスト9です。',
@@ -79,6 +88,7 @@ class TodoSeeder extends Seeder
                 'updated_at' => '2021/12/09 11:11:11',
             ],
             [
+                'id' => '10',
                 'user_id' => 1,
                 'title' => 'test10',
                 'content' => 'テスト10です。',
