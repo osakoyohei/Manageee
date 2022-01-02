@@ -45,6 +45,8 @@
 
     <button class="btn btn-lg btn-primary btn-block" type="submit">ログイン</button><br>
 
+    <button class="btn btn-lg btn-success btn-block" type="button" onclick="location.href='{{ route('login.guest') }}'">ゲストログイン</button><br>
+
     <div class="password-reset">
         <a href="{{ route('password.request') }}">パスワードお忘れの方</a>
     </div>
