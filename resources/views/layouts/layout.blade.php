@@ -12,10 +12,10 @@
 
     <!-- icon -->
     @if(app('env')=='local')
-        <link rel="shortcut icon" type="image/x-icon"  href="{{ asset('/images/favicon.ico') }}">
+        <link rel="icon" href="{{ asset('/images/favicon.ico') }}">
     @endif
     @if(app('env')=='production')
-        <link rel="shortcut icon" type="image/x-icon"  href="{{ secure_asset('/images/favicon.ico') }}">
+        <link rel="icon" href="{{ secure_asset('/images/favicon.ico') }}">
     @endif
     
     <!-- Styles -->
