@@ -16,7 +16,8 @@
     @csrf
         <button type="submit" class="delete-button">削除</button>
     </form>
-
+    <button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'">編集</button>
+    
     <h6 class="detail-title">やること</h6>
     <h5>{{ $todo->title }}</h5>
 

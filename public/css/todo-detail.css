@@ -1,3 +1,7 @@
+body {
+    word-break: break-all;
+}
+
 .detail {
     width: 100%;
     max-width: 800px;
@@ -22,6 +26,13 @@
     margin-top: -35px;
     float: right;
 }
-.delete-button:hover {
-    text-decoration: underline;
+
+.edit-button {
+    color: #999999;
+    background-color: #EEEEEE;
+    border: #EEEEEE;
+    border-radius: 2px;
+    margin-top: -35px;
+    margin-right: 50px;
+    float: right;
 }

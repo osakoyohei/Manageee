@@ -40,18 +40,20 @@
     @else
         <table class="table table-striped">
             <tr>
-                <th>やること</th>
-                <th>登録日 @sortablelink('created_at', '')</th>
-                <th>経過日数</th>
-                <th>詳細</th>
-                <th>編集</th>
-                <th>完了</th>
+                <th class="th-todo">やること</th>
+                <th class="th-registration-date">登録日 @sortablelink('created_at', '')</th>
+                <th class="th-days">経過日数</th>
+                <th class="th-category">カテゴリー</th>
+                <th class="th-button">詳細</th>
+                <th class="th-button">編集</th>
+                <th class="th-button">完了</th>
             </tr>
             @foreach($todos as $todo)
             <tr>
-                <td>{{ $todo->title }}</td>
+                <td>{{Str::limit($todo->title, 10, '…' )}}</td>
                 <td>{{ $todo->created_at->format('Y/m/d') }}</td>
                 <td>{{ $today->diffInDays($todo->created_at->format('Y/m/d')) }}日</td>
+                <td>プライベート</td>
                 <td><button type="button" class="list-button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
                 <td><button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
                 <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDelete()">
