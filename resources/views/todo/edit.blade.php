@@ -39,6 +39,24 @@
                 </div>
             @endif
         </div>
+
+        <div class="form-group">
+            <label for="category">カテゴリー</label><br>
+            <select name="category">
+                @foreach($categories as $category)
+                    <option value="{{ $category->id }}"
+                        @if($category->id == $todo->category_id) selected @endif>
+                        {{ $category->name }}
+                    </option>
+                @endforeach
+            </select>
+            @if ($errors->has('category'))
+                <div class="text-danger">
+                    {{ $errors->first('category') }}
+                </div>
+            @endif
+        </div>
+
         <div class="mt-5">
             <a class="btn btn-secondary" href="{{ route('todo.index') }}">キャンセル</a>
             <button type="submit" class="btn btn-primary">更新する</button>
