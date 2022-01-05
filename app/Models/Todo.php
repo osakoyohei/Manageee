@@ -25,4 +25,9 @@ class Todo extends Model
     public $sortable = [
         'created_at',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }
