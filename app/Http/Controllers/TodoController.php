@@ -7,6 +7,7 @@ use App\Models\Todo;
 use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
+use App\Models\Category;
 
 class TodoController extends Controller
 {
@@ -33,8 +34,9 @@ class TodoController extends Controller
     public function index()
     {
         $user_id = Auth::id();
-        $todos = Todo::sortable()->where('user_id', $user_id)->paginate(5);
+        $todos = Todo::sortable()->with('category')->where('user_id', $user_id)->paginate(5);
         $today = Carbon::today();
+
         return view('todo.index', [
             'todos' => $todos,
             'today' => $today,
@@ -66,7 +68,11 @@ class TodoController extends Controller
      */
     public function create()
     {
-        return view('todo.create');
+        $categories = Category::all();
+
+        return view('todo.create', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -78,13 +84,14 @@ class TodoController extends Controller
     public function store(TodoRequest $request)
     {
         $user_id = Auth::id();
-        
+
         \DB::beginTransaction();
         try {
             Todo::create([
+                'user_id' => $user_id,
                 'title' => $request['title'],
                 'content' => $request['content'],
-                'user_id' => $user_id,
+                'category_id' => $request->category,
             ]);
             \DB::commit();
         } catch(\Throwable $e) {
@@ -104,13 +111,17 @@ class TodoController extends Controller
     public function edit($id)
     {
         $todo = Todo::find($id);
-        
+        $categories = Category::all();
+
         if (is_null($todo)) {
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todo.index'));
         }
         
-        return view('todo.edit', ['todo' => $todo]);
+        return view('todo.edit', [
+            'todo' => $todo,
+            'categories' => $categories,
+        ]);
     }
 
     /**
@@ -122,13 +133,14 @@ class TodoController extends Controller
     public function update(TodoRequest $request)
     {
         $inputs = $request->all();
-        
+
         \DB::beginTransaction();
         try {
             $todo = Todo::find($inputs['id']);
             $todo->fill([
                 'title' => $inputs['title'],
                 'content' => $inputs['content'],
+                'category_id' => $inputs['category'],
             ]);
             $todo->save();
             \DB::commit();

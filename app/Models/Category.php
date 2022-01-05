@@ -9,6 +9,9 @@ class Category extends Model
 {
     use HasFactory;
 
+    //テーブル名
+    protected $table = 'categories';
+
     public function todos()
     {
         return $this->hasMany(Todo::class);

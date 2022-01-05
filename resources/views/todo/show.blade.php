@@ -23,7 +23,10 @@
 
     <h6 class="detail-title">内容</h6>
     <h5>{{ $todo->content }}</h5>
-  
+
+    <h6 class="detail-title">カテゴリー</h6>
+    <h5>{{ $todo->category->name }}</h5>
+
 </div>
 <script>
 function checkDelete(){

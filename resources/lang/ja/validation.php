@@ -157,6 +157,7 @@ return [
         'currentPassword' => '現在のパスワード',
         'newPassword' => '新しいパスワード',
         'password_confirmation' => 'パスワード確認',
+        'category' => 'カテゴリー',
     ],
 
 ];

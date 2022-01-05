@@ -16,9 +16,10 @@ class Todo extends Model
 
     //可変項目
     protected $fillable = [
+        'user_id',
         'title',
         'content',
-        'user_id',
+        'category_id',
     ];
 
     // ソート
