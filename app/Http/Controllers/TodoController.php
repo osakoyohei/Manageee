@@ -91,7 +91,7 @@ class TodoController extends Controller
                 'user_id' => $user_id,
                 'title' => $request['title'],
                 'content' => $request['content'],
-                'category_id' => $request->category,
+                'category_id' => $request['category'],
             ]);
             \DB::commit();
         } catch(\Throwable $e) {
