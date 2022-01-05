@@ -16,13 +16,19 @@ class Todo extends Model
 
     //可変項目
     protected $fillable = [
+        'user_id',
         'title',
         'content',
-        'user_id',
+        'category_id',
     ];
 
     // ソート
     public $sortable = [
         'created_at',
     ];
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
 }

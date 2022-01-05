@@ -26,6 +26,13 @@ class TodoRequest extends FormRequest
         return [
             'title' =>  'required|max:100',
             'content' => 'required|max:255',
+            'category' => 'required',
+        ];
+    }
+
+    public function messages() {
+        return [
+            'category.required' => 'カテゴリーを選択してください。',
         ];
     }
 }

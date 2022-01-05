@@ -1,3 +1,23 @@
+.th-todo {
+    width: 100px;
+}
+
+.th-registration-date {
+    width: 100px;
+}
+
+.th-days {
+    width: 70px;
+}
+
+.th-category {
+    width: 100px;
+}
+
+.th-button {
+    width: 50px;
+}
+
 .list {
     width: 100%;
     max-width: 900px;
