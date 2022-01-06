@@ -36,10 +36,14 @@ class TodoController extends Controller
         $user_id = Auth::id();
         $todos = Todo::sortable()->with('category')->where('user_id', $user_id)->paginate(5);
         $today = Carbon::today();
+        $categories = Category::all();
+        $categoryId = '';
 
         return view('todo.index', [
             'todos' => $todos,
             'today' => $today,
+            'categories' => $categories,
+            'categoryId' => $categoryId,
         ]);
     }
 
@@ -196,28 +200,4 @@ class TodoController extends Controller
         return redirect(route('todo.index'))->with('danger', 'ToDoを削除しました！');
     }
     
-    /**
-     * やることをキーワード検索する。
-     * 
-     * @return view
-     */
-    public function titleSearch(Request $request)
-    {
-        $keyword = $request->keyword;
-
-        if (!empty($keyword)) {
-            $query = Todo::query()->where('title', 'like', '%'. $keyword. '%');
-
-            $user_id = Auth::id();
-            $todos = $query->sortable()->where('user_id', $user_id)->paginate(5);
-            $today = Carbon::today();
-            return view('todo.index', [
-                'todos' => $todos,
-                'today' => $today,
-                'keyword' => $keyword,
-            ]);
-        } else {
-            return back();
-        }
-    }
 }
