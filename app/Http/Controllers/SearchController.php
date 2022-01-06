@@ -22,9 +22,7 @@ class SearchController extends Controller
 
         if (isset($keyword)) {
             $todo = Todo::where('title', 'like', '%'. $keyword. '%');
-
-            $user_id = Auth::id();
-            $todos = $todo->sortable()->where('user_id', $user_id)->paginate(5);
+            $todos = $todo->sortable()->where('user_id', Auth::id())->paginate(5);
             $today = Carbon::today();
             $categories = Category::all();
             $categoryId = '';
@@ -53,9 +51,7 @@ class SearchController extends Controller
 
         if (isset($categoryId)) {
             $category = Todo::where('category_id', $categoryId);
-            
-            $user_id = Auth::id();
-            $todos = $category->sortable()->where('user_id', $user_id)->paginate(5);
+            $todos = $category->sortable()->where('user_id', Auth::id())->paginate(5);
             $today = Carbon::today();
             $categories = Category::all();
 
