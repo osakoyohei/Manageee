@@ -33,8 +33,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::id();
-        $todos = Todo::sortable()->with('category')->where('user_id', $user_id)->paginate(5);
+        $todos = Todo::sortable()->with('category')->where('user_id', Auth::id())->paginate(5);
         $today = Carbon::today();
         $categories = Category::all();
         $categoryId = '';
@@ -62,7 +61,9 @@ class TodoController extends Controller
             return redirect(route('todo.index'));
         }
 
-        return view('todo.show', ['todo' => $todo]);
+        return view('todo.show', [
+            'todo' => $todo,
+        ]);
     }
 
     /**
@@ -87,15 +88,13 @@ class TodoController extends Controller
      */
     public function store(TodoRequest $request)
     {
-        $user_id = Auth::id();
-
         \DB::beginTransaction();
         try {
             Todo::create([
-                'user_id' => $user_id,
-                'title' => $request['title'],
-                'content' => $request['content'],
-                'category_id' => $request['category'],
+                'user_id' => Auth::id(),
+                'title' => $request->title,
+                'content' => $request->content,
+                'category_id' => $request->category,
             ]);
             \DB::commit();
         } catch(\Throwable $e) {
@@ -136,15 +135,13 @@ class TodoController extends Controller
      */
     public function update(TodoRequest $request)
     {
-        $inputs = $request->all();
-
         \DB::beginTransaction();
         try {
-            $todo = Todo::find($inputs['id']);
+            $todo = Todo::find($request->id);
             $todo->fill([
-                'title' => $inputs['title'],
-                'content' => $inputs['content'],
-                'category_id' => $inputs['category'],
+                'title' => $request->title,
+                'content' => $request->content,
+                'category_id' => $request->category,
             ]);
             $todo->save();
             \DB::commit();
@@ -181,7 +178,7 @@ class TodoController extends Controller
      /**
      * ToDoを削除する。
      * 
-     * @param int $id ToDoを完了するID。
+     * @param int $id ToDoを削除するID。
      * @return view
      */
     public function delete($id)

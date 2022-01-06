@@ -26,13 +26,11 @@ class ProfileController extends Controller
      */
     public function update(ProfileRequest $request)
     {
-        $inputs = $request->all();
-        
         \DB::beginTransaction();
         try {
             $profile = User::find(Auth::id());
             $profile->fill([
-                'name' => $inputs['name'],
+                'name' => $request->name,
             ]);
             $profile->save();
             \DB::commit();

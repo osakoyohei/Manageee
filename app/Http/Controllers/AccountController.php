@@ -28,15 +28,12 @@ class AccountController extends Controller
      */
     public function emailUpdate(AccountEmailRequest $request)
     {
-        $requestPassword = $request['password'];
-        $password = Auth::user()->password;
-
-        if (Hash::check($requestPassword, $password)) {
+        if (Hash::check($request->password, Auth::user()->password)) {
             \DB::beginTransaction();
             try {
                 $account = User::find(Auth::id());
                 $account->fill([
-                    'email' => $request['email'],
+                    'email' => $request->email,
                 ]);
                 $account->save();
                 \DB::commit();
@@ -60,15 +57,12 @@ class AccountController extends Controller
      */
     public function passwordUpdate(AccountPasswordRequest $request)
     {
-        $requestPassword = $request['currentPassword'];
-        $password = Auth::user()->password;
-
-        if (Hash::check($requestPassword, $password)) {
+        if (Hash::check($request->currentPassword, Auth::user()->password)) {
             \DB::beginTransaction();
             try {
                 $account = User::find(Auth::id());
                 $account->fill([
-                    'password' => Hash::make($request['newPassword']),
+                    'password' => Hash::make($request->newPassword),
                 ]);
                 $account->save();
                 \DB::commit();
