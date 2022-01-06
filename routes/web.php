@@ -9,6 +9,7 @@ use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\TodoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
+use App\Http\Controllers\SearchController;
 
 /*
 |--------------------------------------------------------------------------
@@ -82,5 +83,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/todo/done/{id}', [TodoController::class, 'done'])->name('todo.done');
 
     // キーワード検索
-    Route::get('todo/title/search', [TodoController::class, 'titleSearch'])->name('title.search');
+    Route::get('todo/title/search', [SearchController::class, 'titleSearch'])->name('title.search');
+    // カテゴリー検索
+    Route::get('todo/category/search', [SearchController::class, 'categorySearch'])->name('category.search');
+    
 });
