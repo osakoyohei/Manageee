@@ -12,11 +12,18 @@
 @section('content')
 <div class="detail">
     <h2 class="title">ToDo詳細</h2>
+
+    <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDone()">
+        @csrf
+        <button type="submit" class="done-button">完了</button>
+    </form>
+
+    <button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'">編集</button>
+
     <form method="POST" action="{{ route('todo.delete', $todo->id) }}" onSubmit="return checkDelete()">
-    @csrf
+        @csrf
         <button type="submit" class="delete-button">削除</button>
     </form>
-    <button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'">編集</button>
     
     <h6 class="detail-title">やること</h6>
     <h5>{{ $todo->title }}</h5>
@@ -29,6 +36,14 @@
 
 </div>
 <script>
+function checkDone(){
+    if(window.confirm('ToDoを完了してよろしいですか？')){
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function checkDelete(){
     if(window.confirm('ToDoを削除してよろしいですか？')){
         return true;
