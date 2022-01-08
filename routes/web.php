@@ -10,6 +10,7 @@ use App\Http\Controllers\TodoController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\ChatBotController;
 
 /*
 |--------------------------------------------------------------------------
@@ -86,5 +87,8 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('todo/title/search', [SearchController::class, 'titleSearch'])->name('title.search');
     // カテゴリー検索
     Route::get('todo/category/search', [SearchController::class, 'categorySearch'])->name('category.search');
+    
+    // 勉強時間計測ボットお友達追加画面を表示する
+    Route::get('study-time/chatbot', [ChatBotController::class, 'index'])->name('study.chatbot');
     
 });

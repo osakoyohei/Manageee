@@ -31,8 +31,22 @@ class CategorySeeder extends Seeder
             ],
             [
                 'id' => 3,
-                'name' => 'その他',
+                'name' => '勉強',
                 'sort' => 3,
+                'created_at' => '2022/01/01 11:11:11',
+                'updated_at' => '2022/01/01 11:11:11',
+            ],
+            [
+                'id' => 4,
+                'name' => '筋トレ',
+                'sort' => 4,
+                'created_at' => '2022/01/01 11:11:11',
+                'updated_at' => '2022/01/01 11:11:11',
+            ],
+            [
+                'id' => 5,
+                'name' => 'その他',
+                'sort' => 5,
                 'created_at' => '2022/01/01 11:11:11',
                 'updated_at' => '2022/01/01 11:11:11',
             ],
