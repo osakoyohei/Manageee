@@ -73,7 +73,7 @@
             <tr>
                 <td>{{Str::limit($todo->title, 10, '…' )}}</td>
                 <td>{{ $todo->created_at->format('Y/m/d') }}</td>
-                <td>{{ $today->diffInDays($todo->created_at->format('Y/m/d')) }}日</td>
+                <td>{{ $today->diffInDays($todo->created_at) }}日</td>
                 <td>{{ $todo->category->name }}</td>
                 <td><button type="button" class="list-button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
                 <td><button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
