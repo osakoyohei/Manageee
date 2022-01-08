@@ -8,6 +8,7 @@ use App\Http\Requests\TodoRequest;
 use Illuminate\Support\Facades\Auth;
 use Carbon\Carbon;
 use App\Models\Category;
+use App\Models\TodoHistory;
 
 class TodoController extends Controller
 {
@@ -54,15 +55,17 @@ class TodoController extends Controller
      */
     public function show($id)
     {
-        $todo = Todo::find($id);
-        
-        if (is_null($todo)) {
+        if (is_null($id)) {
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todo.index'));
         }
 
+        $todo = Todo::find($id);
+        $today = Carbon::today();
+
         return view('todo.show', [
             'todo' => $todo,
+            'today' => $today,
         ]);
     }
 
@@ -154,7 +157,7 @@ class TodoController extends Controller
     }
 
     /**
-     * ToDoを完了する。
+     * ToDoを完了する（ToDo完了履歴に登録）。
      * 
      * @param int $id ToDoを完了するID。
      * @return view
@@ -165,10 +168,24 @@ class TodoController extends Controller
             \Session::flash('err_msg', 'データがありません。');
             return redirect(route('todo.index'));
         }
-        
+
+        $todo = Todo::find($id);
+
+        \DB::beginTransaction();
         try {
+            TodoHistory::create([
+                'user_id' => Auth::id(),
+                'title' => $todo->title,
+                'content' => $todo->content,
+                'category_id' => $todo->category_id,
+                'todo_created_at' => $todo->created_at,
+            ]);
+
             Todo::destroy($id);
+
+            \DB::commit();
         } catch(\Throwable $e) {
+            \DB::rollback();
             abort(500);
         }
         

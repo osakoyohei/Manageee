@@ -1,0 +1,19 @@
+body {
+    word-break: break-all;
+}
+
+.todo-history {
+    width: 100%;
+    max-width: 800px;
+    min-width :600px;
+    padding: 15px;
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.detail-title {
+    color: #999999;
+    border-bottom: solid 1px #C0C0C0;
+    margin-top: 20px;
+}

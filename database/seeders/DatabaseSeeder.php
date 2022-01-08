@@ -27,6 +27,7 @@ class DatabaseSeeder extends Seeder
             CategorySeeder::class,
             UserSeeder::class,
             TodoSeeder::class,
+            TodoHistorySeeder::class,
         ]);
     }
 }
