@@ -22,11 +22,15 @@
         <label for="name">
             名前：
         </label>
-        <input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}">
-        @if ($errors->has('name'))
-            <div class="text-danger">
-                {{ $errors->first('name') }}
-            </div>
+        @if (Auth::id() === 1)
+            <input type="text"class="form-control" value="{{ Auth::user()->name }}" disabled>
+        @else
+            <input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}">
+            @if ($errors->has('name'))
+                <div class="text-danger">
+                    {{ $errors->first('name') }}
+                </div>
+            @endif
         @endif
     </div>
     <div class="mt-3">

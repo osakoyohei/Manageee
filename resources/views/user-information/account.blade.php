@@ -21,11 +21,15 @@
         <label for="email">
             メールアドレス設定：
         </label>
-        <input type="text" id="email" name="email" class="form-control" value="{{ Auth::user()->email }}">
-        @if ($errors->has('email'))
-            <div class="text-danger">
-                {{ $errors->first('email') }}
-            </div>
+        @if (Auth::id() === 1)
+            <input type="text" class="form-control" value="{{ Auth::user()->email }}" disabled>
+        @else
+            <input type="text" id="email" name="email" class="form-control" value="{{ Auth::user()->email }}">
+            @if ($errors->has('email'))
+                <div class="text-danger">
+                    {{ $errors->first('email') }}
+                </div>
+            @endif
         @endif
     </div>
 
