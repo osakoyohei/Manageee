@@ -1,9 +1,9 @@
 .index {
+    margin: 0 auto;
     width: 100%;
     max-width: 900px;
     min-width :600px;
     padding: 15px;
-    margin: auto;
 }
 
 .title {
