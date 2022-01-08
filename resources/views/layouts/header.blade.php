@@ -19,6 +19,7 @@
             <div class="dropdown-menu dropdown-menu-right">
                 <a class="dropdown-item" href="{{ route('profile.index') }}">プロフィール</a>
                 <a class="dropdown-item" href="{{ route('account.index') }}">アカウント設定</a>
+                <a class="dropdown-item" href="{{ route('history.index') }}">ToDo完了履歴</a>
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
                     <button class="dropdown-item" style="color:gray;">ログアウト</button>

@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AccountController;
 use App\Http\Controllers\SearchController;
 use App\Http\Controllers\ChatBotController;
+use App\Http\Controllers\TodoHistoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,19 +28,19 @@ use App\Http\Controllers\ChatBotController;
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::group(['middleware' => ['guest']], function() {
-    // ログインフォームを表示する
+    // ログインフォームを表示
     Route::get('/login', [LoginController::class, 'showLogin'])->name('login.show');
     // ログイン処理
     Route::post('/login', [LoginController::class, 'login'])->name('login');
     // ゲストユーザーログイン
     Route::get('/login/guest', [LoginController::class, 'guestLogin'])->name('login.guest');
 
-    // 新規登録画面を表示する
+    // 新規登録画面を表示
     Route::get('/register', [RegisterController::class, 'showRegister'])->name('register.show');
     // 新規登録処理
     Route::post('/register', [RegisterController::class, 'register'])->name('register');
     
-    // パスワード再設定メールアドレス入力フォームを表示する
+    // パスワード再設定メールアドレス入力フォームを表示
     Route::get('/password/reset', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
     // パスワード再設定メール送信
     Route::post('/password/email', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
@@ -63,12 +64,17 @@ Route::group(['middleware' => ['auth']], function() {
     // パスワードの変更
     Route::post('/password/update', [AccountController::class, 'passwordUpdate'])->name('password.update');
     
+    // ToDo完了履歴一覧を表示
+    Route::get('/todo/history', [TodoHistoryController::class, 'index'])->name('history.index');
+    // ToDo完了詳細画面を表示
+    Route::get('/todo/history/{id}', [TodoHistoryController::class, 'show'])->name('history.show');
+
     // ログアウト処理
     Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
-    // ToDoリスト画面を表示する
+    // ToDoリスト画面を表示
     Route::get('/todo/index', [TodoController::class, 'index'])->name('todo.index');
-    // ToDo登録画面を表示する
+    // ToDo登録画面を表示
     Route::get('/todo/create', [TodoController::class, 'create'])->name('todo.create');
     // ToDo登録
     Route::post('/todo/store', [TodoController::class, 'store'])->name('todo.store');
