@@ -88,7 +88,7 @@ class LoginController extends Controller
      */
     public function guestLogin()
     {
-        $email = 'guest@guest.jp';
+        $email = 'guest@guest.com';
         $password = 'password';
 
         if (Auth::attempt(['email' => $email, 'password' => $password])) {
