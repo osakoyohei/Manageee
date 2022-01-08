@@ -2,16 +2,16 @@
 @section('title', 'ToDo詳細')
 @push('css')
     @if(app('env')=='local')
-        <link href="{{ asset('/css/todo-detail.css') }}" rel="stylesheet">
+        <link href="{{ asset('/css/todo-show.css') }}" rel="stylesheet">
     @endif
     @if(app('env')=='production')
-        <link href="{{ secure_asset('/css/todo-detail.css') }}" rel="stylesheet">
+        <link href="{{ secure_asset('/css/todo-show.css') }}" rel="stylesheet">
     @endif
 @endpush
 
 @section('content')
 <div class="detail">
-    <h2 class="title">ToDo詳細</h2>
+    <h2>ToDo詳細</h2>
 
     <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDone()">
         @csrf
@@ -33,6 +33,12 @@
 
     <h6 class="detail-title">カテゴリー</h6>
     <h5>{{ $todo->category->name }}</h5>
+
+    <h6 class="detail-title">登録日</h6>
+    <h5>{{ $todo->created_at->format('Y/m/d') }}</h5>
+
+    <h6 class="detail-title">経過日数</h6>
+    <h5>{{ $today->diffInDays($todo->created_at) }}</h5>
 
 </div>
 <script>
