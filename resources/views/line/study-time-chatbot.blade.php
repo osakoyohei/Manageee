@@ -19,7 +19,7 @@
         <img src="https://scdn.line-apps.com/n/line_add_friends/btn/ja.png" alt="友だち追加" height="36" border="0" class="mb-3">
     </a>
 
-    <video width="400px" height="500px" src="/videos/study-time-chatbot.MOV" autoplay muted loop controls playsinline></video>
+    <video width="400px" height="500px" src="/videos/study-time-chatbot.mp4" poster="/images/running-dial-clock.jpeg" autoplay muted loop controls playsinline></video>
     
 </div>
 
