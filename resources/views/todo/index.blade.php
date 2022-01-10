@@ -61,13 +61,13 @@
     @else
         <table class="table table-striped">
             <tr>
-                <th class="th-todo">やること</th>
-                <th class="th-registration-date">登録日 @sortablelink('created_at', '')</th>
-                <th class="th-days">経過日数</th>
-                <th class="th-category">カテゴリー</th>
-                <th class="th-button">詳細</th>
-                <th class="th-button">編集</th>
-                <th class="th-button">完了</th>
+                <th class="col-2">やること</th>
+                <th class="col-auto">登録日 @sortablelink('created_at', '')</th>
+                <th class="col-auto">経過日数</th>
+                <th class="col-2">カテゴリー</th>
+                <th class="col-1">詳細</th>
+                <th class="col-1">編集</th>
+                <th class="col-1">完了</th>
             </tr>
             @foreach($todos as $todo)
             <tr>
