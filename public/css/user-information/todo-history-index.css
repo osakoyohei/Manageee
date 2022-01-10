@@ -6,6 +6,13 @@
     padding: 15px;
 }
 
+table td {
+	background: white;
+}
+table tr:nth-child(odd) td {
+	background: #e9ecef;
+}
+
 .sort_black {
     color: black;
 }
