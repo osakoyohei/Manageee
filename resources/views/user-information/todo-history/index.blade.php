@@ -22,7 +22,7 @@
         <table class="table table-striped">
             <tr>
                 <th>やること</th>
-                <th>完了日</th>
+                <th>完了日 @sortablelink('created_at', '')</th>
                 <th></th>
             </tr>
             @foreach($todoHistories as $todoHistory)
