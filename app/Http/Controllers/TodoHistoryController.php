@@ -30,7 +30,7 @@ class TodoHistoryController extends Controller
      */
     public function index()
     {
-        $todoHistories = TodoHistory::where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(5);
+        $todoHistories = TodoHistory::sortable()->where('user_id', Auth::id())->orderBy('created_at', 'desc')->paginate(5);
     
         return view('user-information.todo-history.index', [
             'todoHistories' => $todoHistories,

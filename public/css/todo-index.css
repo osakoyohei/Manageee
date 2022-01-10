@@ -5,26 +5,6 @@
     min-width :600px;
 }
 
-.th-todo {
-    width: 100px;
-}
-
-.th-registration-date {
-    width: 100px;
-}
-
-.th-days {
-    width: 70px;
-}
-
-.th-category {
-    width: 100px;
-}
-
-.th-button {
-    width: 50px;
-}
-
 i {
     color: white;
 }

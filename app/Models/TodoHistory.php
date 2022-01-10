@@ -5,10 +5,12 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Symfony\Component\CssSelector\Node\FunctionNode;
+use Kyslik\ColumnSortable\Sortable;
 
 class TodoHistory extends Model
 {
     use HasFactory;
+    use Sortable;
 
     //テーブル名
     protected $table = 'todo_histories';
