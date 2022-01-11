@@ -95,6 +95,6 @@ Route::group(['middleware' => ['auth']], function() {
     Route::get('todo/category/search', [SearchController::class, 'categorySearch'])->name('category.search');
     
     // 勉強時間計測ボットお友達追加画面を表示する
-    Route::get('study-time/chatbot', [ChatBotController::class, 'index'])->name('study.chatbot');
+    // Route::get('study-time/chatbot', [ChatBotController::class, 'index'])->name('study.chatbot');
     
 });
