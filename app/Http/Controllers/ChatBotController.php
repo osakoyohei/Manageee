@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 class ChatBotController extends Controller
 {
     /**
-     * 勉強時間計測ボットお友達追加画面を表示する。
+     * ラインチャットボット追加ページを表示する。
      * 
      * @return view  
      */
