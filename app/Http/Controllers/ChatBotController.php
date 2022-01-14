@@ -13,6 +13,6 @@ class ChatBotController extends Controller
      */
     public function index()
     {
-        return view('line.study-time-chatbot');
+        return view('line.chatbot');
     }
 }

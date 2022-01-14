@@ -9,7 +9,7 @@
                 <a href="{{ route('todo.create') }}" class="btn btn-link" style="color:white;">ToDo登録 <span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item active">
-                <a href="{{ route('study.chatbot') }}" class="btn btn-link" style="color:white;">勉強時間計測 <span class="sr-only">(current)</span></a>
+                <a href="{{ route('study.chatbot') }}" class="btn btn-link" style="color:white;">名言チャットボット <span class="sr-only">(current)</span></a>
             </li>
         </ul>
         <div class="btn-group">
