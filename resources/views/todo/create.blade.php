@@ -43,7 +43,7 @@
             <select name="category">
                 <option value="">カテゴリーを選択してください</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" @if(old('category')==$category->id) selected @endif>{{ $category->name }}</option>
                 @endforeach
             </select>
             @if ($errors->has('category'))
