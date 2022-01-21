@@ -24,25 +24,13 @@
 
     <h2>{{ Auth::user()->name }}<small>さんの</small>ToDoリスト</h2><br>
 
-    <!-- やることキーワード検索 -->
+    <!-- キーワード検索、カテゴリー検索 -->
     <div class="post-search-form">
-        <form class="form-inline" action="{{ route('title.search') }}" method="GET">
+        <form class="form-inline" action="{{ route('search') }}" method="GET">
             <div class="form-group">
-                <label for="keyword" class="mr-4">やること検索　</label>
-                <input type="text" name="keyword" class="form-control mr-1" id="keyword" placeholder="キーワードを入力" value="@if(isset($keyword)){{ $keyword }}@endif">
-            </div>
-            <input type="submit" value="検索" class="btn btn-secondary">
-        </form>
-    </div>
-    <br>
-
-    <!-- カテゴリー検索 -->
-    <div class="post-search-form">
-        <form class="form-inline" action="{{ route('category.search') }}" method="GET">
-            <div class="form-group">
-                <label for="category" class="mr-4">カテゴリー検索</label>
-                <select name="category" class="form-control mr-1" id="category">
-                    <option value="">カテゴリーで検索 　　</option>
+                <input type="text" name="keyword" class="form-control mr-1" placeholder="キーワードを入力" value="@if(isset($keyword)){{ $keyword }}@endif">
+                <select name="category" class="form-control mr-1">
+                    <option value="">カテゴリーを選択 　　</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
                             @if($category->id == $categoryId) selected @endif>

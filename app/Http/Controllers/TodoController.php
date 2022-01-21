@@ -214,4 +214,36 @@ class TodoController extends Controller
         return redirect(route('todo.index'))->with('danger', 'ToDoを削除しました！');
     }
     
+    /**
+     * キーワード検索、カテゴリー検索。
+     * 
+     * @param Request $request
+     * @return view
+     */
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+        $categoryId = $request->category;
+
+        $search = Todo::where('user_id', Auth::id());
+
+        if (isset($keyword)) {
+            $search->where('title', 'like', '%'. $keyword. '%');
+        }
+        if (isset($categoryId)) {
+            $search->where('category_id', $categoryId);
+        }
+
+        $todos = $search->sortable()->paginate(5);
+        $today = Carbon::today();
+        $categories = Category::all();
+
+        return view('todo.index', [
+            'todos' => $todos,
+            'today' => $today,
+            'categories' => $categories,
+            'keyword' => $keyword,
+            'categoryId' => $categoryId,
+        ]);
+    }
 }
