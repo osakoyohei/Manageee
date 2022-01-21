@@ -88,11 +88,9 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/todo/delete/{id}', [TodoController::class, 'delete'])->name('todo.delete');
     //ToDo完了
     Route::post('/todo/done/{id}', [TodoController::class, 'done'])->name('todo.done');
-
-    // キーワード検索
-    Route::get('todo/title/search', [SearchController::class, 'titleSearch'])->name('title.search');
-    // カテゴリー検索
-    Route::get('todo/category/search', [SearchController::class, 'categorySearch'])->name('category.search');
+    
+    // キーワード検索、カテゴリー検索
+    Route::get('todo/search/various', [TodoController::class, 'search'])->name('search');
     
     // 勉強時間計測ボットお友達追加画面を表示する
     Route::get('line-chatbot', [ChatBotController::class, 'index'])->name('study.chatbot');
