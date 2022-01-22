@@ -42,10 +42,19 @@
             <input type="submit" value="検索" class="btn btn-secondary">
         </form>
     </div>
-    <br>
+
+    @if (!empty($keyword) && !empty($categoryName))
+        <br><h5>・キーワード「{{ $keyword }}」とカテゴリー「{{ $categoryName }}」の検索結果</h5>
+    @elseif (!empty($keyword))
+        <br><h5>・キーワード「{{ $keyword }}」の検索結果</h5>
+    @elseif (!empty($categoryName))
+        <br><h5>・カテゴリー「{{ $categoryName }}」の検索結果</h5>
+    @endif
+    
+    <hr>
 
     @if(empty($todos[0]['user_id']))
-        <h5>ToDoが登録されていません。</h5>
+        <h4>ToDoが登録されていません。</h4>
     @else
         <table class="table table-striped">
             <tr>

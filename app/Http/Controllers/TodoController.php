@@ -227,16 +227,20 @@ class TodoController extends Controller
 
         $search = Todo::where('user_id', Auth::id());
 
-        if (isset($keyword)) {
+        if (!empty($keyword)) {
             $search->where('title', 'like', '%'. $keyword. '%');
         }
-        if (isset($categoryId)) {
+        if (!empty($categoryId)) {
             $search->where('category_id', $categoryId);
         }
 
         $todos = $search->sortable()->paginate(5);
         $today = Carbon::today();
         $categories = Category::all();
+        $categoryName = '';
+        if (!empty($categoryId)) {
+            $categoryName = Category::find($categoryId)->name;
+        }
 
         return view('todo.index', [
             'todos' => $todos,
@@ -244,6 +248,7 @@ class TodoController extends Controller
             'categories' => $categories,
             'keyword' => $keyword,
             'categoryId' => $categoryId,
+            'categoryName' => $categoryName,
         ]);
     }
 }
