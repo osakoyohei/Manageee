@@ -28,7 +28,7 @@
 
         <div class="form-group">
             <label for="content">
-                内容
+                内容　<span class="text-danger">「#」を付けてタグ付けができます。</span>
             </label>
             <textarea id="content" name="content" class="form-control" rows="4">{{ old('content') }}</textarea>
             @if ($errors->has('content'))
