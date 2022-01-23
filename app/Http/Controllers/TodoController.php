@@ -92,24 +92,31 @@ class TodoController extends Controller
      */
     public function store(TodoRequest $request)
     {
-        $todo = new Todo;
-        $todo->user_id = Auth::id();
-        $todo->title = $request->title;
-        $todo->content = $request->content;
-        $todo->category_id = $request->category;
+        \DB::beginTransaction();
+        try {
+            $todo = new Todo;
+            $todo->user_id = Auth::id();
+            $todo->title = $request->title;
+            $todo->content = $request->content;
+            $todo->category_id = $request->category;
 
-        preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->content, $match);
-        $tags = [];
-        foreach ($match[1] as $tag) {
-            $found = Tag::firstOrCreate(['tag_name' => $tag]);
-            array_push($tags, $found);
+            preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->content, $match);
+            $tags = [];
+            foreach ($match[1] as $tag) {
+                $found = Tag::firstOrCreate(['tag_name' => $tag]);
+                array_push($tags, $found);
+            }
+            $tag_ids = [];
+            foreach ($tags as $tag) {
+                array_push($tag_ids, $tag['id']);
+            }
+            $todo->save();
+            $todo->tags()->attach($tag_ids);
+            \DB::commit();
+        } catch(\Throwable $e) {
+            \DB::rollback();
+            abort(500);
         }
-        $tag_ids = [];
-        foreach ($tags as $tag) {
-            array_push($tag_ids, $tag['id']);
-        }
-        $todo->save();
-        $todo->tags()->attach($tag_ids);
 
         return redirect(route('todo.index'))->with('success', 'ToDoを登録しました！');
     }
