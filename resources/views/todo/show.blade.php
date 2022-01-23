@@ -31,6 +31,15 @@
     <h6 class="detail-title">内容</h6>
     <h5>{{ $todo->content }}</h5>
 
+    <h6 class="detail-title">タグ</h6>
+    @if ($todo->tags->isEmpty())
+        <h5>タグがありません。</h5>
+    @else
+        @foreach ($todo->tags as $tag)
+            <h5>#{{ $tag->tag_name }}</h5>
+        @endforeach
+    @endif
+
     <h6 class="detail-title">カテゴリー</h6>
     <h5>{{ $todo->category->name }}</h5>
 
