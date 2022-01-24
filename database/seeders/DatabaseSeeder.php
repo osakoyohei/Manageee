@@ -28,6 +28,8 @@ class DatabaseSeeder extends Seeder
             UserSeeder::class,
             TodoSeeder::class,
             TodoHistorySeeder::class,
+            TagSeeder::class,
+            TagTodoSeeder::class,
         ]);
     }
 }
