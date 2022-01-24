@@ -236,7 +236,7 @@ class TodoController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->keyword;
-        $categoryId = $request->category;
+        $categoryId = $request->category_id;
 
         $search = Todo::where('user_id', Auth::id());
 
@@ -252,7 +252,7 @@ class TodoController extends Controller
         $categories = Category::all();
         $categoryName = '';
         if (!empty($categoryId)) {
-            $categoryName = Category::find($categoryId)->name;
+            $categoryName = Category::find($categoryId)->category_name;
         }
 
         return view('todo.index', [

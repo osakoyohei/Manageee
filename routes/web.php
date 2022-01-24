@@ -90,7 +90,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::post('/todo/done/{id}', [TodoController::class, 'done'])->name('todo.done');
     
     // キーワード検索、カテゴリー検索
-    Route::get('todo/search/various', [TodoController::class, 'search'])->name('search');
+    Route::get('todo/search/various', [TodoController::class, 'search'])->name('todo.search');
     
     // 勉強時間計測ボットお友達追加画面を表示する
     Route::get('line-chatbot', [ChatBotController::class, 'index'])->name('study.chatbot');

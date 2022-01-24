@@ -26,15 +26,15 @@
 
     <!-- キーワード検索、カテゴリー検索 -->
     <div class="post-search-form">
-        <form class="form-inline" action="{{ route('search') }}" method="GET">
+        <form class="form-inline" action="{{ route('todo.search') }}" method="GET">
             <div class="form-group">
                 <input type="text" name="keyword" class="form-control mr-1" placeholder="キーワードを入力" value="@if(isset($keyword)){{ $keyword }}@endif">
-                <select name="category" class="form-control mr-1">
+                <select name="category_id" class="form-control mr-1">
                     <option value="">カテゴリーを選択 　　</option>
                     @foreach ($categories as $category)
                         <option value="{{ $category->id }}"
                             @if($category->id == $categoryId) selected @endif>
-                            {{ $category->name }}
+                            {{ $category->category_name }}
                         </option>
                     @endforeach
                 </select>
@@ -71,7 +71,7 @@
                 <td>{{Str::limit($todo->title, 10, '…' )}}</td>
                 <td>{{ $todo->created_at->format('Y/m/d') }}</td>
                 <td>{{ $today->diffInDays($todo->created_at) }}日</td>
-                <td>{{ $todo->category->name }}</td>
+                <td>{{ $todo->category->category_name }}</td>
                 <td><button type="button" class="list-button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
                 <td><button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
                 <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDelete()">
