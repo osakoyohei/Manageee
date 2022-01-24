@@ -26,7 +26,7 @@ class TodoRequest extends FormRequest
         return [
             'title' =>  'required|max:100',
             'content' => 'required|max:255',
-            'category' => 'required',
+            'category_id' => 'required',
         ];
     }
 

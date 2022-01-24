@@ -40,10 +40,10 @@
 
         <div class="form-group">
             <label for="category">カテゴリー</label><br>
-            <select name="category">
+            <select name="category_id">
                 <option value="">カテゴリーを選択してください</option>
                 @foreach($categories as $category)
-                    <option value="{{ $category->id }}" @if(old('category')==$category->id) selected @endif>{{ $category->name }}</option>
+                    <option value="{{ $category->id }}" @if(old('category')==$category->id) selected @endif>{{ $category->category_name }}</option>
                 @endforeach
             </select>
             @if ($errors->has('category'))

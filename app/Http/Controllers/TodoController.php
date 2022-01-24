@@ -98,7 +98,7 @@ class TodoController extends Controller
             $todo->user_id = Auth::id();
             $todo->title = $request->title;
             $todo->content = $request->content;
-            $todo->category_id = $request->category;
+            $todo->category_id = $request->category_id;
 
             preg_match_all('/#([a-zA-Z0-9０-９ぁ-んァ-ヶー一-龠]+)/u', $request->content, $match);
             $tags = [];
@@ -157,7 +157,7 @@ class TodoController extends Controller
             $todo->fill([
                 'title' => $request->title,
                 'content' => $request->content,
-                'category_id' => $request->category,
+                'category_id' => $request->category_id,
             ]);
             $todo->save();
             \DB::commit();
