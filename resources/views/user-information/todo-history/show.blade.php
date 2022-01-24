@@ -22,7 +22,7 @@
     <h5>{{ $todoHistory->content }}</h5>
 
     <h6 class="detail-title">カテゴリー</h6>
-    <h5>{{ $todoHistory->category->name }}</h5>
+    <h5>{{ $todoHistory->category->category_name }}</h5>
 
     <h6 class="detail-title">登録日</h6>
     <h5>{{ $todoHistory->todo_created_at->format('Y/m/d') }}</h5>

@@ -42,11 +42,11 @@
 
         <div class="form-group">
             <label for="category">カテゴリー</label><br>
-            <select name="category">
+            <select name="category_id">
                 @foreach($categories as $category)
                     <option value="{{ $category->id }}"
                         @if($category->id == $todo->category_id) selected @endif>
-                        {{ $category->name }}
+                        {{ $category->category_name }}
                     </option>
                 @endforeach
             </select>

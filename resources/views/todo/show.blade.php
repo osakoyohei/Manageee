@@ -33,7 +33,7 @@
 
     <h6 class="detail-title">タグ</h6>
     @if ($todo->tags->isEmpty())
-        <h5>タグがありません。</h5>
+        <h5>タグはありません。</h5>
     @else
         @foreach ($todo->tags as $tag)
             <h5>#{{ $tag->tag_name }}</h5>
@@ -41,7 +41,7 @@
     @endif
 
     <h6 class="detail-title">カテゴリー</h6>
-    <h5>{{ $todo->category->name }}</h5>
+    <h5>{{ $todo->category->category_name }}</h5>
 
     <h6 class="detail-title">登録日</h6>
     <h5>{{ $todo->created_at->format('Y/m/d') }}</h5>
