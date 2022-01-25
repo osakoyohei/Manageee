@@ -50,6 +50,10 @@
     @elseif (!empty($categoryName))
         <br><h5>・カテゴリー「{{ $categoryName }}」の検索結果</h5>
     @endif
+
+    @if (!empty($tagName))
+        <br><h5>・タグ「#{{ $tagName }}」の検索結果</h5>
+    @endif
     
     <hr>
 

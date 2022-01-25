@@ -36,7 +36,7 @@
         <h5>タグはありません。</h5>
     @else
         @foreach ($todo->tags as $tag)
-            <h5>#{{ $tag->tag_name }}</h5>
+            <h5><a href="{{ route('todo.tag', $tag->id) }}">#{{ $tag->tag_name }}</a></h5>
         @endforeach
     @endif
 
