@@ -17,7 +17,7 @@ class TagSeeder extends Seeder
         DB::table('tags')->insert([
             [
                 'id' => 1,
-                'tag_name' => 'プログミング',
+                'tag_name' => 'プログラミング',
                 'created_at' => '2022/01/01 11:11:11',
                 'updated_at' => '2022/01/01 11:11:11',
             ],

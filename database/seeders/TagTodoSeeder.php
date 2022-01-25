@@ -50,6 +50,13 @@ class TagTodoSeeder extends Seeder
                 'created_at' => '2022/01/06 11:11:11',
                 'updated_at' => '2022/01/06 11:11:11',
             ],
+            [
+                'id' => 6,
+                'tag_id' => 1,
+                'todo_id' => 11,
+                'created_at' => '2022/01/10 11:11:11',
+                'updated_at' => '2022/01/10 11:11:11',
+            ],
         ]);
     }
 }
