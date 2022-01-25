@@ -273,7 +273,15 @@ class TodoController extends Controller
      */
     public function tagSeach($id)
     {
+        if (is_null(Tag::find($id))) {
+            abort(404);
+        }
+
         $todos = Tag::find($id)->todos()->where('user_id', Auth::id())->sortable()->paginate(5);
+        
+        if ($todos->isEmpty()){
+            abort(404);
+        }
 
         $today = Carbon::today();
         $categories = Category::all();
