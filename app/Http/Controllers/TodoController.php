@@ -264,4 +264,28 @@ class TodoController extends Controller
             'categoryName' => $categoryName,
         ]);
     }
+
+    /**
+     * タグ検索。
+     * 
+     * @param int $id TagのID。
+     * @return view
+     */
+    public function tagSeach($id)
+    {
+        $todos = Tag::find($id)->todos()->where('user_id', Auth::id())->sortable()->paginate(5);
+
+        $today = Carbon::today();
+        $categories = Category::all();
+        $categoryId = '';
+        $tagName = Tag::find($id)->tag_name;
+
+        return view('todo.index', [
+            'todos' => $todos,
+            'today' => $today,
+            'categories' => $categories,
+            'categoryId' => $categoryId,
+            'tagName' => $tagName,
+        ]);
+    }
 }
