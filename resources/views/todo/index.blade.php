@@ -62,14 +62,14 @@
     @else
         <table class="table table-striped">
             <tr>
-                <th class="col-auto">やること</th>
-                <th class="col-auto">登録日 @sortablelink('created_at', '')</th>
-                <th class="col-auto">経過日数</th>
-                <th class="col-auto">タグ</th>
-                <th class="col-auto">カテゴリー</th>
-                <th class="col-1">詳細</th>
-                <th class="col-1">編集</th>
-                <th class="col-1">完了</th>
+                <th>やること</th>
+                <th>登録日 @sortablelink('created_at', '')</th>
+                <th>経過日数</th>
+                <th>タグ</th>
+                <th>カテゴリー</th>
+                <th>詳細</th>
+                <th>編集</th>
+                <th>完了</th>
             </tr>
             @foreach($todos as $todo)
             <tr>
@@ -96,6 +96,7 @@
             @endforeach
         </table>
         {{ $todos->appends(request()->query())->links() }}
+        <br>
     @endif
 </div>
 <script>
