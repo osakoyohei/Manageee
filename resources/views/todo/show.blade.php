@@ -10,7 +10,7 @@
 @endpush
 
 @section('content')
-<div class="detail mb-3">
+<div class="detail mb-5">
     <h2>ToDo詳細</h2>
 
     <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDone()">
