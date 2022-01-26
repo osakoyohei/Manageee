@@ -35,7 +35,7 @@ class TodoController extends Controller
      */
     public function index()
     {
-        $todos = Todo::sortable()->with('category')->where('user_id', Auth::id())->paginate(5);
+        $todos = Todo::sortable()->with('category', 'tags')->where('user_id', Auth::id())->paginate(5);
         $today = Carbon::today();
         $categories = Category::all();
         $categoryId = '';
@@ -278,7 +278,7 @@ class TodoController extends Controller
         }
 
         $todos = Tag::find($id)->todos()->where('user_id', Auth::id())->sortable()->paginate(5);
-        
+
         if ($todos->isEmpty()){
             abort(404);
         }
