@@ -91,7 +91,7 @@
             @endif
         </div>
 
-        <div class="mt-3">
+        <div class="my-3">
             <button type="submit" class="btn btn-secondary">パスワードを変更する</button>
         </div>
     </form>

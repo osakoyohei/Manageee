@@ -57,7 +57,7 @@
             @endif
         </div>
 
-        <div class="mt-5">
+        <div class="mt-5 mb-3">
             <a class="btn btn-secondary" href="{{ route('todo.index') }}">キャンセル</a>
             <button type="submit" class="btn btn-primary">更新する</button>
         </div>
