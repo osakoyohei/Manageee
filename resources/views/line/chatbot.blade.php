@@ -11,7 +11,7 @@
 @section('content')
 
 <!-- LINEチャットボット -->
-<div class="chatbot-explanation mb-3">
+<div class="chatbot-explanation mb-5">
     <h2>☆名言チャットボット☆</h2><br>
     <h4 >名言チャットボットを友達追加して、<br>毎朝届く偉人の名言でモチベーションを上げよう！</h4>
     <a href="https://lin.ee/1O8PgNv" target="_blank" rel="noopener noreferrer">
