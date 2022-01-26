@@ -50,6 +50,10 @@
     @elseif (!empty($categoryName))
         <br><h5>・カテゴリー「{{ $categoryName }}」の検索結果</h5>
     @endif
+
+    @if (!empty($tagName))
+        <br><h5>・タグ「#{{ $tagName }}」の検索結果</h5>
+    @endif
     
     <hr>
 
@@ -58,10 +62,11 @@
     @else
         <table class="table table-striped">
             <tr>
-                <th class="col-2">やること</th>
+                <th class="col-auto">やること</th>
                 <th class="col-auto">登録日 @sortablelink('created_at', '')</th>
                 <th class="col-auto">経過日数</th>
-                <th class="col-2">カテゴリー</th>
+                <th class="col-auto">タグ</th>
+                <th class="col-auto">カテゴリー</th>
                 <th class="col-1">詳細</th>
                 <th class="col-1">編集</th>
                 <th class="col-1">完了</th>
@@ -71,6 +76,15 @@
                 <td>{{Str::limit($todo->title, 10, '…' )}}</td>
                 <td>{{ $todo->created_at->format('Y/m/d') }}</td>
                 <td>{{ $today->diffInDays($todo->created_at) }}日</td>
+                @if ($todo->tags->isEmpty())
+                    <td>タグなし。</td>
+                @else
+                    <td>
+                    @foreach ($todo->tags as $tag)
+                       <a href="{{ route('todo.tag', $tag->id) }}">#{{ Str::limit($tag->tag_name, 10, '…' )}}</a>
+                    @endforeach
+                    </td>
+                @endif
                 <td>{{ $todo->category->category_name }}</td>
                 <td><button type="button" class="list-button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
                 <td><button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
