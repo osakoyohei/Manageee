@@ -63,10 +63,10 @@
         <table class="table table-striped">
             <tr>
                 <th>やること</th>
-                <th>登録日 @sortablelink('created_at', '')</th>
-                <th>経過日数</th>
                 <th>タグ</th>
                 <th>カテゴリー</th>
+                <th>登録日 @sortablelink('created_at', '')</th>
+                <th>経過日数</th>
                 <th>詳細</th>
                 <th>編集</th>
                 <th>完了</th>
@@ -74,8 +74,6 @@
             @foreach($todos as $todo)
             <tr>
                 <td>{{Str::limit($todo->title, 10, '…' )}}</td>
-                <td>{{ $todo->created_at->format('Y/m/d') }}</td>
-                <td>{{ $today->diffInDays($todo->created_at) }}日</td>
                 @if ($todo->tags->isEmpty())
                     <td>タグなし。</td>
                 @else
@@ -86,6 +84,8 @@
                     </td>
                 @endif
                 <td>{{ $todo->category->category_name }}</td>
+                <td>{{ $todo->created_at->format('Y/m/d') }}</td>
+                <td>{{ $today->diffInDays($todo->created_at) }}日</td>
                 <td><button type="button" class="list-button" onclick="location.href='/todo/{{ $todo->id }}'"><i class="far fa-list-alt"></i></button></td>
                 <td><button type="button" class="edit-button" onclick="location.href='/todo/edit/{{ $todo->id }}'"><i class="fas fa-edit"></i></button></td>
                 <form method="POST" action="{{ route('todo.done', $todo->id) }}" onSubmit="return checkDelete()">
