@@ -31,7 +31,7 @@
     <h5>{{ $todoHistory->created_at->format('Y/m/d') }}</h5>
 
     <h6 class="detail-title">登録から完了までの日数</h6>
-    <h5>{{ $todoHistory->todo_created_at->diffInDays($todoHistory->created_at) }}日</h5>
+    <h5>{{ $todo_created_at->diffInDays($todoHistory->created_at->toDateString()) }}日</h5>
 
 </div>
 

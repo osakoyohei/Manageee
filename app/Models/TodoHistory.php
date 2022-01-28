@@ -25,7 +25,9 @@ class TodoHistory extends Model
     ];
 
     // DateTime型に変換
-    protected $dates = ['todo_created_at'];
+    protected $dates = [
+        'todo_created_at'
+    ];
 
     public function user() {
         return $this->belongsTo(User::class);
