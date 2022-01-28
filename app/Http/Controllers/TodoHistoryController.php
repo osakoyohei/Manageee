@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\TodoHistory;
+use Carbon\Carbon;
 
 class TodoHistoryController extends Controller
 {
@@ -51,9 +52,11 @@ class TodoHistoryController extends Controller
         }
 
         $todoHistory = TodoHistory::find($id);
+        $todo_created_at = new Carbon($todoHistory->todo_created_at->toDateString());
 
         return view('user-information.todo-history.show', [
             'todoHistory' => $todoHistory,
+            'todo_created_at' => $todo_created_at,
         ]);
     }
 
