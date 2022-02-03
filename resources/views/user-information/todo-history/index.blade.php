@@ -21,9 +21,9 @@
     @else
         <table class="table table-striped">
             <tr>
-                <th>やること</th>
-                <th>完了日 @sortablelink('created_at', '')</th>
-                <th class="col-2"></th>
+                <th class="col-auto">やること</th>
+                <th class="col-auto">完了日 @sortablelink('created_at', '')</th>
+                <th class="col-auto"></th>
             </tr>
             @foreach($todoHistories as $todoHistory)
             <tr>
